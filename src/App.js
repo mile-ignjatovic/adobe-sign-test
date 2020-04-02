@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
+import './App.module.css';
+import MobxTest from './components/MobxTest/MobxTest';
+import MobxTestStoreProvider from './components/MobxTest/MobxTestStore';
+import StyledComponentTest from './components/StyledComponentTest/StyledComponentTest';
+import Test from './components/Test/Test';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <main className="App">
+        App works!
+        <hr />
+        Routing test:
+        <br />
+        <Link to="mobx">Test Mobx</Link>
+        <br />
+        <Link to="styled">Test StyledComponent</Link>
+
+        <Route path="/" exact component={Test} />
+        <MobxTestStoreProvider>
+          <Route path="/mobx" exact component={MobxTest} />
+        </MobxTestStoreProvider>
+        <Route path="/styled" exact component={StyledComponentTest} />
+      </main>
+    </BrowserRouter>
   );
 }
 

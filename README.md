@@ -1,23 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dev guide:
 
-## Available Scripts
+### `npm install`
 
-In the project directory, you can run:
+Runs the instalation of npm packages
+IMPORTANT!!! to enable css modules with less in this setup, when npm packages are installed navigate to node_modules/less-watch-compiler/dist/lib/lessWatchCompilerUtils.js
+    and on the line: 138 change
+        ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.css'
+    to
+        ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.module.css'
+    
+### `npm run dev-start`
+    Starts npm run less-watch and npm run start and json-server on port 3001 concurently.
+    !If you run this script you should not run npm start and, run less-watch and json-server!
 
-### `yarn start`
+### `npm run less-watch`
+
+Runs less-watch-compiler to automaticaly compile less files to xxx.module.css
+(if files are not compiling correctly, restart npm start and npm run less-watch scripts)
+
+### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### `npm run json-server`
 
-### `yarn test`
+Runs json-server --watch db.json --port 3001
+Serves a mock json database with data located in ./db.json file
+
+### `npm run test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -26,7 +42,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+<!-- 
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
@@ -65,4 +81,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `yarn build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify -->
