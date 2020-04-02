@@ -14,6 +14,11 @@ To enable css modules with less in this setup, when npm packages are installed n
     Starts npm run less-watch and npm run start and json-server on port 3001 concurently.
     !If you run this script you should not run npm start and, run less-watch and json-server!
 
+
+
+### This is it... below are just details about each specific script
+
+
 ### `npm run less-watch`
 
 Runs less-watch-compiler to automaticaly compile less files to xxx.module.css
