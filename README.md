@@ -3,7 +3,8 @@ Dev guide:
 ### `npm install`
 
 Runs the instalation of npm packages
-IMPORTANT!!! to enable css modules with less in this setup, when npm packages are installed navigate to node_modules/less-watch-compiler/dist/lib/lessWatchCompilerUtils.js
+### IMPORTANT!!! >>> 
+To enable css modules with less in this setup, when npm packages are installed navigate to node_modules/less-watch-compiler/dist/lib/lessWatchCompilerUtils.js
     and on the line: 138 change
         ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.css'
     to
