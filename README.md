@@ -49,6 +49,28 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `Requirements 1`:
+
+Model, želimo da imamo:  
+Dokumente / originalni dokument koji je uploadovan  
+Participante / Je User u kontekstu agreementa. Npr. User Mile je prvi potpisnik u agreementu.  
+Usere / Konkretank korisnik koji moze potpisivati agreement  
+Agreemente / Agreement sadrzi skup dokumenata koji su vezanih za potpis i skup participanata.  
+Sadrži dokumente koji se potpisuju  
+Sadrži participante agreementa  
+Ima status (Poslat, U potpisivanju, Potpisan)  
+  
+Trebaju mi 2 strane, Send i Manage page.  
+Send page:  
+Mogu kreirati Agreemente  
+Za svaki agreement mogu definisati 1 ili vise dokumenata  
+Svaki dokument se definise nazivom  
+Za svaki agreement mogu definisati 1 ili vise participanata  
+svaki participant se definise preko email adrese  
+Manage Page:  
+Mogu da izlistam sve agreemente  
+Kad kliknem na agremeent, treba da se povuku detalji agreemneta (lazy novim requestom)  
 <!-- 
 ### `yarn eject`
 
