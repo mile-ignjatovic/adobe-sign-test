@@ -1,38 +1,29 @@
+import Axios from 'axios-observable';
 import { useObserver } from 'mobx-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { delay } from 'rxjs/operators';
 import classes from './MobxTest.module.css';
 import { MobxTestStoreContext } from './MobxTestStore';
+
 const MobxTest = (props) => {
 
-    const [ currentTimer, setTimer ] = useState(null);
+    const [ currentSubs, setSubs ] = useState(null);
 
     const store = useContext(MobxTestStoreContext)
 
-    // TODO: test if this is working
-    const abortController = new AbortController();
-    const { signal } = abortController;
-
     useEffect(() => {
-        // TODO: refactor
         if (!store.storeData[ 0 ]) {
-            fetch('http://localhost:3001/persons', { signal }).then(res => {
-                res.json().then(data => {
-                    let timeout = setTimeout(() => {
-                        store.addNewStoreData(data);
-                    }, 2000);
-                    setTimer(timeout);
-                });
-
-            }).catch(err => {
+            const sub = Axios.get('http://localhost:3001/persons').pipe(delay(1000)).subscribe(res => {
+                store.addNewStoreData(res.data);
+            }, err => {
                 alert(err.message);
             });
+            setSubs(sub);
         }
 
         return () => {
-            // TODO: fix abort fetch request 
-            abortController.abort();
-            clearTimeout(currentTimer);
+            if (currentSubs) currentSubs.unsubscribe();
         }
     }, []);
 
