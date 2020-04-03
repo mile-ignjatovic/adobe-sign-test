@@ -1,14 +1,76 @@
 {
-    "persons": [
+    "users": [
+        {
+            "id": 0,
+            "name": "Mile",
+            "email": "mile@test.com",
+            "password": "1234",
+            "agreementIds": [1, 2, 3]
+        },
         {
             "id": 1,
-            "name": "mile",
-            "age": 30
+            "name": "Nikola",
+            "password": "1234",
+            "email": "nikola@test.com",
+            "agreementIds": [3,4]
+        }
+    ],
+    "agreements": [
+        {
+            "id": 1,
+            "userIds": [0],
+            "documentIds": [0,1,2],
+            "status": "sent"
         },
         {
             "id": 2,
-            "name": "Ana",
-            "age": 25
+            "userIds": [0],
+            "documentIds": [0,1,2],
+            "status": "singing"
+        },
+        {
+            "id": 3,
+            "userIds": [0,1],
+            "documentIds": [0,1,2],
+            "status": "singed"
+        },
+        {
+            "id": 4,
+            "userIds": [1],
+            "documentIds": [0, 1, 2, 3, 4],
+            "status": "sent"
+        }
+    ],
+    "documents": [
+        {
+            "id": 0,
+            "name": "doc 1",
+            "location": "",
+            "userIds": [0, 1]
+        },
+        {
+            "id": 1,
+            "name": "doc 2",
+            "location": "",
+            "userIds": [0, 1]
+        },
+        {
+            "id": 2,
+            "name": "doc 3",
+            "location": "",
+            "userIds": [0, 1]
+        },
+        {
+            "id": 3,
+            "name": "doc 4",
+            "location": "",
+            "userIds": [ 1]
+        },
+        {
+            "id": 4,
+            "name": "doc 5",
+            "location": "",
+            "userIds": [ 1]
         }
     ]
 }
