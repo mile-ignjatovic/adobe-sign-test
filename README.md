@@ -3,15 +3,22 @@ Dev guide:
 ### `npm install`
 
 Runs the instalation of npm packages
-IMPORTANT!!! to enable css modules with less in this setup, when npm packages are installed navigate to node_modules/less-watch-compiler/dist/lib/lessWatchCompilerUtils.js
-    and on the line: 138 change
-        ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.css'
-    to
+
+### IMPORTANT!!! >>> 
+To enable css modules with less in this setup, when npm packages are installed navigate to node_modules/less-watch-compiler/dist/lib/lessWatchCompilerUtils.js  
+    and on the line: 138 change  
+        ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.css'  
+    to  
         ext: (lessWatchCompilerUtilsModule.config.minified ? '.min' : '') + '.module.css'
     
 ### `npm run dev-start`
     Starts npm run less-watch and npm run start and json-server on port 3001 concurently.
     !If you run this script you should not run npm start and, run less-watch and json-server!
+
+
+
+### This is it... below are just details about each specific script
+
 
 ### `npm run less-watch`
 
