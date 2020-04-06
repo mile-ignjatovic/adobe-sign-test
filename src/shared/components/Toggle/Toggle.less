@@ -1,0 +1,53 @@
+.Toggle {
+    display: flex;
+    align-items: center;
+
+    &-span {
+        margin-left: 1rem;
+
+        &-false {
+            color: rgb(182, 182, 182);
+        }
+    }
+
+    &-input[type=checkbox] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+
+    &-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 2.5rem;
+        height: 1.25rem;
+        background: rgb(182, 182, 182);
+        display: block;
+        border-radius: 1.25rem;
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 2.3px;
+            left: 2px;
+            width: 1rem;
+            height: 1rem;
+            background: #fff;
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+    }
+}
+
+.Toggle-input:checked + .Toggle-label {
+	background: #007bff;
+}
+
+.Toggle-input:checked + .Toggle-label:after {
+	left: calc(100% - 2px);
+	transform: translateX(-100%);
+}
+
+.Toggle-label:active:after {
+	width: 1rem;
+}

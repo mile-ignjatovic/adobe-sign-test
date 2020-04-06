@@ -1,6 +1,7 @@
 .Checkbox {
   display: flex;
   width: fit-content;
+  font-size: inherit;
 }
 .Checkbox-input {
   -webkit-appearance: none;
