@@ -1,0 +1,19 @@
+.Recipients-header {
+  display: flex;
+  justify-content: space-between;
+}
+.Recipients-dropdown {
+  width: 100%;
+  height: 2rem;
+  background-color: #eee;
+  border: var(--normalBorder);
+  display: flex;
+  align-items: center;
+}
+.Recipients-main {
+  display: flex;
+}
+.Recipients-main__message {
+  display: flex;
+  flex-direction: column;
+}

@@ -2,14 +2,41 @@ import React from 'react';
 import classes from './Recipients.module.css';
 import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
 import Toggle from '../../../shared/components/Toggle/Toggle';
-import Checkbox from '../../../shared/components/Checkbox/Checkbox';
+import Button from '../../../shared/components/Button/Button';
 
 const Recipients = (props) => {
     return (
         <div classes={classes.Recipients}>
             <SectionTitle>Recipients</SectionTitle>
-            <Toggle toggleOptions={['Complete in order', 'Complete in Any Order']} toggle={(event) => {console.log('recipients toggle event', event)}} />
-            <Checkbox checkboxChange={(event)=>{console.log('ckeckbox change recipients', event);}}>label</Checkbox>
+            <div className={classes['Recipients-header']}>
+                <Toggle 
+                    toggleOptions={['Complete in order', 'Complete in Any Order']} 
+                    toggle={(event) => {console.log('recipients toggle event', event)}} />
+                    <div>
+                        <Button link>Add me</Button>
+                        <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
+                        <Button link>Add Recipient Group</Button>
+                        <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
+                        <span>icon</span>
+                    </div>
+            </div>
+            <div className={classes['Recipients-dropdown']}>TODO: autocomplete dropdown</div>
+            <Button link>Show CC</Button>
+            <div className={classes['Recipients-main']}>
+                <div>
+                    <div className={classes['Recipients-main__message']}>
+                        <SectionTitle>Message</SectionTitle>
+                        <input />
+                        <textarea />
+                    </div>
+                    <div>
+                        TODO: file upload component
+                    </div>
+                </div>
+                <div>
+                    TODO: send options component
+                </div>
+            </div>
         </div>
     );
 }
