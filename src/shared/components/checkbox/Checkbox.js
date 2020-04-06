@@ -3,7 +3,7 @@ import classes from './Checkbox.module.css';
 
 const Checkbox = (props) => {
 
-    let [checkboxState, setCheckboxState] = useState(true);
+    let [checkboxState, setCheckboxState] = useState(props.checked ? !props.checked : true);
 
     const changeCheckbox = () => {
         setCheckboxState(!checkboxState);

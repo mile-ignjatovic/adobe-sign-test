@@ -3,7 +3,9 @@ import classes from './Toggle.module.css';
 
 const Toggle = (props) => {
 
-    let [toggleState, setToggleState] = useState(true);
+    const inputId = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
+
+    let [toggleState, setToggleState] = useState(props.checked ? !props.checked : true);
 
     const changeToggle = () => {
         setToggleState(!toggleState);
@@ -13,10 +15,10 @@ const Toggle = (props) => {
     let labelClassesOne = !toggleState ? [classes['Toggle-span'], classes['Toggle-span-false']].join(' ') : classes['Toggle-span'];
     let labelClassesTwo = toggleState ? [classes['Toggle-span'], classes['Toggle-span-false']].join(' ') : classes['Toggle-span'];
     
-    let toggleOptionOne = props.toggleOptions[0] ? ( <span className={labelClassesOne}>
+    let toggleOptionOne = props.toggleOptions && props.toggleOptions[0] ? ( <span className={labelClassesOne}>
         {props.toggleOptions[0]}
     </span>): null; 
-    let toggleOptionTwo = props.toggleOptions[1] ? ( <span className={labelClassesTwo}>
+    let toggleOptionTwo = props.toggleOptions && props.toggleOptions[1] ? ( <span className={labelClassesTwo}>
         {props.toggleOptions[1]}
     </span>): null; 
 
@@ -27,11 +29,12 @@ const Toggle = (props) => {
             <input  
                 className={classes['Toggle-input']} 
                 type="checkbox" 
-                id="switch" 
+                id={inputId} 
+                checked={!toggleState}
                 onChange={() => {changeToggle()}}/>
             <label 
                 className={classes['Toggle-label']} 
-                htmlFor="switch">
+                htmlFor={inputId}>
             </label>
             {toggleOptionTwo}
         </div>
