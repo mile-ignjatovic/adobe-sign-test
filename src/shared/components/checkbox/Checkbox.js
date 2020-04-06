@@ -20,7 +20,7 @@ const Checkbox = (props) => {
            checked={!checkboxState}
            onChange={() => {changeCheckbox()}}
             />
-           <label htmlFor="checkbox" className={classes['Checkbox-label']}>{props.label}</label>
+           <label htmlFor="checkbox" className={classes['Checkbox-label']}>{props.children}</label>
        </div>
     );
 }

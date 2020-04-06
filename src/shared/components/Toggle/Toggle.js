@@ -9,17 +9,15 @@ const Toggle = (props) => {
         setToggleState(!toggleState);
         props.toggle(toggleState);
     }
-
-    let toggleOptions = props.toggleOptions ? props.toggleOptions : ['option one', 'option two'];
     
     let labelClassesOne = !toggleState ? [classes['Toggle-span'], classes['Toggle-span-false']].join(' ') : classes['Toggle-span'];
     let labelClassesTwo = toggleState ? [classes['Toggle-span'], classes['Toggle-span-false']].join(' ') : classes['Toggle-span'];
     
-    let toggleOptionOne = toggleOptions[0] ? ( <span className={labelClassesOne}>
-        {toggleOptions[0]}
+    let toggleOptionOne = props.toggleOptions[0] ? ( <span className={labelClassesOne}>
+        {props.toggleOptions[0]}
     </span>): null; 
-    let toggleOptionTwo = toggleOptions[1] ? ( <span className={labelClassesTwo}>
-        {toggleOptions[1]}
+    let toggleOptionTwo = props.toggleOptions[1] ? ( <span className={labelClassesTwo}>
+        {props.toggleOptions[1]}
     </span>): null; 
 
     return (

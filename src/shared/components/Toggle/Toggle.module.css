@@ -1,6 +1,7 @@
 .Toggle {
   display: flex;
   align-items: center;
+  width: fit-content;
 }
 .Toggle-span {
   margin-left: 0.5rem;
@@ -21,7 +22,7 @@
   text-indent: -9999px;
   width: 2.5rem;
   height: 1.25rem;
-  background: #b6b6b6;
+  background: #7a7a7a;
   display: block;
   border-radius: 1.25rem;
   position: relative;
