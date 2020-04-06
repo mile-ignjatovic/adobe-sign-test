@@ -5,10 +5,9 @@
     
     &-span {
         margin-left: .5rem;
-        // margin-right: .5rem;
         
         &-false {
-            color: rgb(182, 182, 182);
+            color: var(--lightGray);
         }
     }
     
@@ -27,7 +26,7 @@
         text-indent: -9999px;
         width: 2.5rem;
         height: 1.25rem;
-        background: rgb(122, 122, 122);
+        background: var(--darkGray);
         display: block;
         border-radius: 1.25rem;
         position: relative;
@@ -46,7 +45,7 @@
 }
 
 .Toggle-input:checked + .Toggle-label {
-	background: #007bff;
+	background: var(--normalBlue);
 }
 
 .Toggle-input:checked + .Toggle-label:after {

@@ -7,7 +7,7 @@
   margin-left: 0.5rem;
 }
 .Toggle-span-false {
-  color: #b6b6b6;
+  color: var(--lightGray);
 }
 .Toggle > span:first-child {
   margin-left: 0;
@@ -22,7 +22,7 @@
   text-indent: -9999px;
   width: 2.5rem;
   height: 1.25rem;
-  background: #7a7a7a;
+  background: var(--darkGray);
   display: block;
   border-radius: 1.25rem;
   position: relative;
@@ -39,7 +39,7 @@
   transition: all 0.3s;
 }
 .Toggle-input:checked + .Toggle-label {
-  background: #007bff;
+  background: var(--normalBlue);
 }
 .Toggle-input:checked + .Toggle-label:after {
   left: calc(100% - 2px);

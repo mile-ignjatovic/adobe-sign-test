@@ -2,7 +2,7 @@
   border: none;
   box-shadow: none;
   cursor: pointer;
-  background-color: #007bff;
+  background-color: var(--normalBlue);
   color: #fff;
   padding: 0.3rem 1rem;
   border-radius: 24px;
@@ -10,10 +10,10 @@
   width: fit-content;
 }
 .Button:hover {
-  background-color: #0367d1;
+  background-color: var(--darkerBlue);
 }
 .Button:active {
-  background-color: #0051a8;
+  background-color: var(--darkBlue);
 }
 .Button:focus {
   outline: none;
@@ -25,16 +25,16 @@
   padding: 0;
   border-radius: 24px;
   background-color: #fff;
-  color: #007bff;
+  color: var(--normalBlue);
   font-weight: 500;
   font-size: inherit;
   width: fit-content;
 }
 .Link:hover {
-  color: #0367d1;
+  color: var(--darkerBlue);
 }
 .Link:active {
-  color: #0051a8;
+  color: var(--darkBlue);
 }
 .Link:focus {
   outline: none;
