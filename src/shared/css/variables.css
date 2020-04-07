@@ -4,8 +4,11 @@
     --normalBorder: 1px solid rgb(0,0,0,.2);
     --strongBorder: 2px solid rgb(0,0,0,.5);
   
+    /* TEXT */
     --appTextColor: rgba(0,0,0,0.7);
+    --fontWeight: 500;
   
+    /* COLORS */
     --lightGray: #afafaf;
     --darkGray: #7a7a7a;
     --normalBlue: #007bff;
