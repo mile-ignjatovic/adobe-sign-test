@@ -6,25 +6,28 @@ import MobxTestStoreProvider from './components/MobxTest/MobxTestStore';
 import StyledComponentTest from './components/StyledComponentTest/StyledComponentTest';
 import Test from './components/Test/Test';
 
+import Header from './components/Header/Header';
 function App() {
   return (
-    <BrowserRouter>
-      <main className="App">
-        App works!
-        <hr />
-        Routing test:
-        <br />
-        <Link to="mobx">Test Mobx</Link>
-        <br />
-        <Link to="styled">Test StyledComponent</Link>
+    <Header />
+    // <BrowserRouter>
+    //   <main className="App">
+    //     App works!
+    //     <hr />
+    //     Routing test:
+    //     <br />
+    //     <Link to="mobx">Test Mobx</Link>
+    //     <br />
+    //     <Link to="styled">Test StyledComponent</Link>
 
-        <Route path="/" exact component={Test} />
-        <MobxTestStoreProvider>
-          <Route path="/mobx" exact component={MobxTest} />
-        </MobxTestStoreProvider>
-        <Route path="/styled" exact component={StyledComponentTest} />
-      </main>
-    </BrowserRouter>
+    //     <Route path="/" exact component={Test} />
+    //     <MobxTestStoreProvider>
+    //       <Route path="/mobx" exact component={MobxTest} />
+    //     </MobxTestStoreProvider>
+    //     <Route path="/styled" exact component={StyledComponentTest} />
+    //   </main>
+    // </BrowserRouter>
+
   );
 }
 

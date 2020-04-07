@@ -1,0 +1,24 @@
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  align-content: left;
+  padding: 10px 0 0 10px;
+  background-color: #ededed;
+}
+.Navbar .LinkPath {
+  margin-right: 18px;
+  padding: 0 0 10px 0;
+  border: none;
+  font-size: 12px;
+  background-color: #ededed;
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+}
+.Navbar .LinkPath:focus {
+  text-decoration: none;
+  padding-bottom: 8px;
+  border-bottom: 2px solid gray;
+  outline: none;
+  color: gray;
+}
