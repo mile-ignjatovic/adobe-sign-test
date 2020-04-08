@@ -1,6 +1,7 @@
 /* VARIABLES */
 /* TODO: check how to use variables with less */
 :root {
+    --focusOutline: rgba(1, 103, 219, 0.479) auto 10px;
     --normalBorder: 1px solid rgb(0,0,0,.2);
     --strongBorder: 2px solid rgb(0,0,0,.5);
   
@@ -8,6 +9,7 @@
   
     --lightGray: #afafaf;
     --darkGray: #7a7a7a;
+    --backgroundBlue: #eaf4ff;
     --normalBlue: #007bff;
     --darkerBlue: #0367d1;
     --darkBlue: #0051a8;
