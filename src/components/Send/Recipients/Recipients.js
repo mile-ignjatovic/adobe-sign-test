@@ -22,21 +22,6 @@ const Recipients = (props) => {
             </div>
             <div className={classes['Recipients-dropdown']}>TODO: autocomplete dropdown</div>
             <Button link>Show CC</Button>
-            <div className={classes['Recipients-main']}>
-                <div>
-                    <div className={classes['Recipients-main__message']}>
-                        <SectionTitle>Message</SectionTitle>
-                        <input />
-                        <textarea />
-                    </div>
-                    <div>
-                        TODO: file upload component
-                    </div>
-                </div>
-                <div>
-                    TODO: send options component
-                </div>
-            </div>
         </div>
     );
 }

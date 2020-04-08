@@ -10,10 +10,3 @@
   display: flex;
   align-items: center;
 }
-.Recipients-main {
-  display: flex;
-}
-.Recipients-main__message {
-  display: flex;
-  flex-direction: column;
-}
