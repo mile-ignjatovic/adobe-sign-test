@@ -6,10 +6,32 @@ import MobxTestStoreProvider from './components/MobxTest/MobxTestStore';
 import StyledComponentTest from './components/StyledComponentTest/StyledComponentTest';
 import Test from './components/Test/Test';
 
+
+import DashboardPage from './components/DashboardPage';
+import ManagePage from './components/ManagePage';
+import SendPage from './components/SendPage';
+
 import Header from './components/Header/Header';
 function App() {
   return (
-    <Header />
+    <BrowserRouter>
+      <Header />
+      {/* <Switch> */}
+      <Route
+        path="/"
+        component={DashboardPage}
+        exact
+      />
+      <Route
+        path="/SendPage"
+        component={SendPage}
+      />
+      <Route
+        path="/ManagePage"
+        component={ManagePage}
+      />
+      {/* </Switch> */}
+    </BrowserRouter>
     // <BrowserRouter>
     //   <main className="App">
     //     App works!

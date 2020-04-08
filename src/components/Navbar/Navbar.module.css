@@ -5,7 +5,7 @@
   padding: 10px 0 0 10px;
   background-color: #ededed;
 }
-.Navbar .LinkPath {
+.Navbar :nth-child(n) {
   margin-right: 18px;
   padding: 0 0 10px 0;
   border: none;
@@ -15,7 +15,7 @@
   color: gray;
   cursor: pointer;
 }
-.Navbar .LinkPath:focus {
+.Navbar :nth-child(n):focus {
   text-decoration: none;
   padding-bottom: 8px;
   border-bottom: 2px solid gray;
