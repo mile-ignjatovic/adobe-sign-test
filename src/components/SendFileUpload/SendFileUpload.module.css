@@ -1,0 +1,20 @@
+.UpladWindow {
+  display: flex;
+  flex-direction: column;
+}
+.UploadUpper {
+  display: flex;
+  flex: row;
+  width: 40%;
+}
+.UploadLower {
+  display: flex;
+  flex: row;
+  width: 40%;
+  border: 1px solid gray;
+  justify-content: center;
+}
+.UploadLower > h4 {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}

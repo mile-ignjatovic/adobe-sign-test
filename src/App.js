@@ -1,22 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.module.css';
-import MobxTest from './components/MobxTest/MobxTest';
-import MobxTestStoreProvider from './components/MobxTest/MobxTestStore';
-import StyledComponentTest from './components/StyledComponentTest/StyledComponentTest';
-import Test from './components/Test/Test';
+import SendPage from './components/Send/Send';
+import PlaygroundPage from './components/playground/Playground';
 
 
 import DashboardPage from './components/DashboardPage';
 import ManagePage from './components/ManagePage';
-import SendPage from './components/SendPage';
 
 import Header from './components/Header/Header';
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      {/* <Switch> */}
       <Route
         path="/"
         component={DashboardPage}
@@ -30,8 +26,12 @@ function App() {
         path="/ManagePage"
         component={ManagePage}
       />
-      {/* </Switch> */}
+      <Route
+        path="/PlaygroundPage"
+        component={PlaygroundPage}
+      />
     </BrowserRouter>
+
     // <BrowserRouter>
     //   <main className="App">
     //     App works!
@@ -50,6 +50,13 @@ function App() {
     //   </main>
     // </BrowserRouter>
 
+    // return (
+    //   <BrowserRouter>
+    //     <main className="App">
+    //     <Header />
+    //      <Send></Send>
+    //     </main>
+    //   </BrowserRouter>
   );
 }
 

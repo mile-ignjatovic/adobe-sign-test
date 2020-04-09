@@ -8,7 +8,7 @@ const Navbar = (props) => {
             <NavLink to="/">Dashboard</NavLink>
             <NavLink to="./SendPage">Send</NavLink>
             <NavLink to="./ManagePage">Manage</NavLink>
-            <NavLink to="">Playground</NavLink>
+            <NavLink to="./Playground">Playground</NavLink>
         </div>
     )
 }
