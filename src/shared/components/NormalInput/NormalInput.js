@@ -5,6 +5,7 @@ import classes from './NormalInput.module.css';
 const NormalInput = (props) => {
     const inputId = generateId('NormalInput');
     const borderBottom = props.hideBottomBorder ? {borderBottom: 'none'} : null
+    const borderLeft = props.hideBorderLeft ? {borderLeft: 'none'} : null
     const backgroundColor = props.backgroundColor ? {backgroundColor: props.backgroundColor} : null
     return (
         <div className={classes.NormalInput} 
@@ -13,7 +14,7 @@ const NormalInput = (props) => {
             <label htmlFor={inputId} className={classes['NormalInput-label']}>{props.label}</label>
             <div className={classes['NormalInput-container']} >
                 <input 
-                    style={{...borderBottom, ...backgroundColor}}
+                    style={{...borderBottom, ...backgroundColor, ...borderLeft}}
                     id={inputId}
                     className={classes['NormalInput-container__el']} 
                     type="text" 
