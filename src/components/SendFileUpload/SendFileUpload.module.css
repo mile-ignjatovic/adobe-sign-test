@@ -11,7 +11,7 @@
   display: flex;
   flex: row;
   width: 40%;
-  border: 1px solid gray;
+  border: 1px solid var(--darkGray);
   justify-content: center;
 }
 .UploadLower > h4 {

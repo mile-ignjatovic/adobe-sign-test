@@ -1,8 +1,8 @@
 
 import React from 'react';
 import style from './Header.module.css';
-import sunflower from './sunflower50.png';
-import qmark16 from './qmark16.png';
+import sunflower from '../../shared/Assets/sunflower50.png';
+import qmark16 from '../../shared/Assets/qmark16.png';
 import Navbar from '../Navbar/Navbar'
 
 

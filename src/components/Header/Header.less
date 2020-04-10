@@ -1,7 +1,7 @@
 .Header {
-  background-color: whitesmoke;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  background-color: var(--darkWhite);
+  border-top: 1px solid var(--darkGray);
+  border-bottom: 1px solid var(--darkGray);
   padding: 4px 0 4px 0;
   display: flex;
   flex-direction: row;
@@ -24,16 +24,17 @@
     justify-content: left;
     align-self: center;
     padding-left: 5px;
-    border-left: 2.47px solid gray;
+    border-left: 2px solid var(--darkGray);
+    //var(--strongBorder(32, 32, 32, 0.5));
 
     .smallText {
       font-size: 12px;
-      color: lightslategray;
+      color: var(--lighGray);
     }
 
     .largeText {
       font-size: 16px;
-      color: #525252;
+      color: var(--darkerGray);
       font-weight: bold;
     }
   }
@@ -47,8 +48,8 @@
   margin-right: 10px;
 
   .FirstButton {
-    background-color: #525252;
-    color: white;
+    background-color: var(--darkerGray);
+    color: var(--white);
     border: none;
     padding: 7px 5px 7px 5px;
     border-radius: 2px;
@@ -56,8 +57,8 @@
   }
 
   .SecondButton {
-    background-color: whitesmoke;
-    color: #525252;
+    background-color: var(--darkWhite);
+    color: var(--darkerGray);
     border: none;
     padding: 7px 5px 7px 5px;
     cursor: pointer;
