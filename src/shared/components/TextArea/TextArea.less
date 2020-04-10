@@ -1,0 +1,24 @@
+.TextArea {
+    &-label {
+        width: 100%;
+    }
+    &-container {
+        
+        &__el {
+                color: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+            padding: .3rem 1rem!important;
+            &:focus {
+                outline: var(--focusOutline);
+                background-color: var(--backgroundBlue);
+            }
+            resize: none;
+            width: 100%!important;
+            height: 100%!important;
+            padding: 0;
+            border: var(--normalBorder);
+            box-sizing: border-box;
+        }
+    }
+}
