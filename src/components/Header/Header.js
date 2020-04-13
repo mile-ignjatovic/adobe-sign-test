@@ -1,14 +1,10 @@
 
 import React from 'react';
 import style from './Header.module.css';
-import sunflower from './sunflower50.png';
-import qmark16 from './qmark16.png';
+import sunflower from '../../shared/Assets/sunflower50.png';
+import qmark16 from '../../shared/Assets/qmark16.png';
 import Navbar from '../Navbar/Navbar'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import DashboardPage from '../DashboardPage';
-import ManagePage from '../ManagePage';
-import SendPage from '../SendPage';
 
 
 const Header = (props) => {
@@ -28,24 +24,8 @@ const Header = (props) => {
                     <img src={qmark16} alt="qm" />
                 </div>
             </div>
-            <BrowserRouter>
-                <Navbar />
-                <Switch>
-                    <Route
-                        path="/"
-                        component={DashboardPage}
-                        exact
-                    />
-                    <Route
-                        path="/SendPage"
-                        component={SendPage}
-                    />
-                    <Route
-                        path="/ManagePage"
-                        component={ManagePage}
-                    />
-                </Switch>
-            </BrowserRouter>
+
+            <Navbar />
         </div>
     )
 }

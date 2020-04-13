@@ -5,10 +5,10 @@ import style from './Navbar.module.css';
 const Navbar = (props) => {
     return (
         <div className={style.Navbar}>
-            <NavLink className={style.LinkPath} to="/">Dashboard</NavLink>
-            <NavLink className={style.LinkPath} to="./SendPage">Send</NavLink>
-            <NavLink className={style.LinkPath} to="./ManagePage">Manage</NavLink>
-            <NavLink className={style.LinkPath} to="">Playground</NavLink>
+            <NavLink to="/">Dashboard</NavLink>
+            <NavLink to="/send">Send</NavLink>
+            <NavLink to="/manage">Manage</NavLink>
+            <NavLink to="/playground">Playground</NavLink>
         </div>
     )
 }
