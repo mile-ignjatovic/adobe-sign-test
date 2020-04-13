@@ -6,9 +6,9 @@ const Navbar = (props) => {
     return (
         <div className={style.Navbar}>
             <NavLink to="/">Dashboard</NavLink>
-            <NavLink to="./SendPage">Send</NavLink>
-            <NavLink to="./ManagePage">Manage</NavLink>
-            <NavLink to="./Playground">Playground</NavLink>
+            <NavLink to="/send">Send</NavLink>
+            <NavLink to="/manage">Manage</NavLink>
+            <NavLink to="/playground">Playground</NavLink>
         </div>
     )
 }

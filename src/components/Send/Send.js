@@ -12,7 +12,7 @@ const Send = (props) => {
             <div className={classes['Send-message']}>
                 <div>
                     <SectionTitle>Message</SectionTitle>
-                   <Message></Message>
+                    <Message />
                     <SendFileUpolad />
                 </div>
                 <div>
