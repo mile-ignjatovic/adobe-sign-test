@@ -1,0 +1,9 @@
+.EmailDropdown {
+  display: flex;
+}
+.EmailDropdown-pencil {
+  display: flex;
+}
+.EmailDropdown-inputContainer {
+  width: 100%;
+}

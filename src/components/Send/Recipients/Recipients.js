@@ -3,7 +3,7 @@ import classes from './Recipients.module.css';
 import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
 import Toggle from '../../../shared/components/Toggle/Toggle';
 import Button from '../../../shared/components/Button/Button';
-import EmailDropdown from './EmailDropdown/EmailDropdown';
+import EmailDropdownList from './EmailDropdownList/EmailDropdownList';
 
 const Recipients = (props) => {
     
@@ -24,7 +24,7 @@ const Recipients = (props) => {
                         <span>icon</span>
                     </div>
             </div>
-            <EmailDropdown />
+            <EmailDropdownList />
             <Button link>Show CC</Button>
         </div>
     );
