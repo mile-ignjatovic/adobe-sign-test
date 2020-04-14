@@ -1,9 +1,84 @@
 .EmailDropdown {
   display: flex;
+  align-items: center;
+  height: 2rem;
+  border: var(--normalBorder);
+  margin-bottom: 0.5rem;
+}
+.EmailDropdown-focus {
+  outline: var(--focusOutline);
+  background-color: var(--lightBlue);
+}
+.EmailDropdown-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9%;
+  height: 100%;
+  border-right: var(--normalBorder);
 }
 .EmailDropdown-pencil {
   display: flex;
+  border-right: var(--normalBorder);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.EmailDropdown-pencil > i:first-child {
+  margin-left: 0.3rem;
+}
+.EmailDropdown-pencil > i:last-child {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
 .EmailDropdown-inputContainer {
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.EmailDropdown-inputContainer__inputBox {
+  width: 100%;
+}
+.EmailDropdown-inputContainer__inputBox input {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: none;
+  background-color: var(--lightBlue);
+}
+.EmailDropdown-inputContainer__inputBox input:focus {
+  outline: none;
+}
+.EmailDropdown-inputContainer__selectedEmailBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--darkGray);
+  border-radius: 100px;
+  width: fit-content;
+  padding: 0 1rem;
+}
+.EmailDropdown-authenticationBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  color: var(--normalBlue);
+  cursor: pointer;
+}
+.EmailDropdown-authenticationBox > i {
+  margin-right: 0.3rem;
+}
+.EmailDropdown-x {
+  width: 10%;
+  color: var(--darkGray);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.EmailDropdown-x:hover {
+  color: var(--normalBlue);
 }

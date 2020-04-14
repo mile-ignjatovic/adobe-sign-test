@@ -39,10 +39,12 @@ const EmailDropdown = (props) => {
        }
     }
 
+    let mainClass = [classes.EmailDropdown, editMode ? classes['EmailDropdown-focus'] : ''].join(' ')
+
     return (
-        <div className={classes.EmailDropdown}>
+        <div className={mainClass}>
             {/* number */}
-            {props.number ? <div>{props.number}</div> : null}
+            {props.number ? <div className={classes['EmailDropdown-number']}>{props.number}</div> : null}
             {/* pencil icon */}
             <div className={classes['EmailDropdown-pencil']}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
@@ -56,7 +58,7 @@ const EmailDropdown = (props) => {
                         <div>{users}</div>
                     </div>
                     : 
-                    <div className={classes['EmailDropdown-inputContainer__selectedEmailBox']}>{currentInput}</div>
+                    <div className={currentInput ? classes['EmailDropdown-inputContainer__selectedEmailBox'] : null}>{currentInput}</div>
                 }
             </div>
             {/* authentication */}
