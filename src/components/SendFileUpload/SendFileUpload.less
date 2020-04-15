@@ -4,19 +4,57 @@
 }
 
 .UploadUpper {
+  margin-left: 150px;
   display: flex;
   flex: row;
   width: 40%;
 }
 
 .UploadLower {
+  margin-left: 150px;
   display: flex;
-  flex: row;
+  flex-direction: column;
   width: 40%;
   border: 1px solid var(--darkGray);
   justify-content: center;
-  > h4 {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  height: max-content;
+
+  .Default {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+
+  .FileRow {
+    border-bottom: 0.5px solid var(--darkGray);
+    color: black;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+
+    img {
+      border-left: 1px var(--darkerGray) dotted;
+      padding-left: 5px;
+    }
+
+    .File {
+      padding-left: 10px;
+    }
+
+    .Close {
+      margin-left: auto;
+      color: var(--darkGray);
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
