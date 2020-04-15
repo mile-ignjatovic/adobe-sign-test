@@ -26,7 +26,6 @@ const EmailDropdownList = (props) => {
         let userDataToAdd = {id: generateId('list-item')};
         let updatedList = [...list, userDataToAdd];
         setList(updatedList);
-        console.log('list', updatedList);
     }
 
     const removeItem = (id) => {
@@ -46,18 +45,18 @@ const EmailDropdownList = (props) => {
         }
     }
 
-    let items = list.map((el, index) => {
-        return <EmailDropdown 
-                key={el.id} 
-                number={index + 1} 
-                inputValue={(oldVal, val, isBackspace) => inputValueChange(oldVal, val, isBackspace, el.id)} 
-                removeItem={() => removeItem(el.id)} 
-            />
-    })
-    
     return (
         <section>
-            {items}
+            {
+                list.map((el, index) => {
+                    return <EmailDropdown 
+                            key={el.id} 
+                            number={index + 1} 
+                            inputValue={(oldVal, val, isBackspace) => inputValueChange(oldVal, val, isBackspace, el.id)} 
+                            removeItem={() => removeItem(el.id)} 
+                        />
+                    })
+            }
         </section>
     );
 }

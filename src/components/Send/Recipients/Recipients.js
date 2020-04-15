@@ -7,8 +7,6 @@ import EmailDropdownList from './EmailDropdownList/EmailDropdownList';
 
 const Recipients = (props) => {
     
-    // TODO: data should be handled by mobx
-
     return (
         <div classes={classes.Recipients}>
             <SectionTitle>Recipients</SectionTitle>
