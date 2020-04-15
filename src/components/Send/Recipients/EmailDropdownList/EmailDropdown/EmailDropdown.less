@@ -1,0 +1,92 @@
+.EmailDropdown {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    border: var(--normalBorder);
+    margin-bottom: .5rem;
+    &-focus {
+        outline: var(--focusOutline);
+        background-color: var(--lightBlue);
+    }
+    &-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 9%;
+        height: 100%;
+        border-right: var(--normalBorder);
+    }
+    
+    &-pencil {
+        display: flex;
+        border-right: var(--normalBorder);
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        > i:first-child {
+            margin-left: .3rem;
+        }
+        >i:last-child {
+            margin-left: .3rem;
+            margin-right: .3rem;
+        }
+    }
+
+    &-inputContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+
+        &__inputBox {
+            width: 100%;
+            input {
+                width: 100%;
+                font: inherit;
+                color: inherit;
+                border: none;
+                background-color: var(--lightBlue);
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        &__selectedEmailBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--darkGray);
+            border-radius: 100px;
+            width: fit-content;
+            padding: 0 1rem;
+        }
+    }
+
+    &-authenticationBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        color: var(--normalBlue);
+        cursor: pointer;
+
+        > i{
+            margin-right: .3rem;
+        }
+    }
+
+    &-x {
+        width: 10%;
+        color: var(--darkGray);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &:hover {
+            color: var(--normalBlue);
+        }
+    }
+}
