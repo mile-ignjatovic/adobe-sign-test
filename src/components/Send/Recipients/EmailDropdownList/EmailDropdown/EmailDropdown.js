@@ -41,7 +41,7 @@ const EmailDropdown = (props) => {
     }
 
     let mainClass = [classes.EmailDropdown, editMode ? classes['EmailDropdown-focus'] : ''].join(' ')
-
+    
     return (
         <div className={mainClass}>
             {/* number */}

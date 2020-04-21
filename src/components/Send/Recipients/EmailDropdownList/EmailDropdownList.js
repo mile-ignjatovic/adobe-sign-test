@@ -51,8 +51,6 @@ const EmailDropdownList = (props) => {
     const onNumberChange = (currIndex, newIndexTarget) => {
         let newIndex = newIndexTarget.target.value - 1; 
         let tempList = [...list];
-        console.log('asd', currIndex !== list.length - 2);
-        console.log('qwe', newIndex < currIndex);
         if (!(currIndex === list.length - 2 && newIndex > currIndex)) {
             let item = tempList.splice(currIndex, 1);
             tempList.splice(newIndex, 0, ...item);
@@ -81,7 +79,7 @@ const EmailDropdownList = (props) => {
                     return <EmailDropdown
                                 key={el.id} 
                                 // moveItem={moveItem}
-                                number={index + 1} 
+                                number={props.inOrder ? index + 1 : undefined} 
                                 isLast={list.length - 1 === index}
                                 onNumberChange={(number) => onNumberChange(index, number)}
                                 inputValue={(oldVal, val, isBackspace) => inputValueChange(oldVal, val, isBackspace, el.id)} 
