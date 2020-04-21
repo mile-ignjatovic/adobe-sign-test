@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios-observable';
 import EmailDropdown from './EmailDropdown/EmailDropdown';
 import {generateId} from '../../../../shared/utils/utils';
+// import DnDItem from '../../../../shared/hoc/DragAndDrop/DragItem/DnDItem';
+// import DnDTarget from '../../../../shared/hoc/DragAndDrop/DragTarget/DnDTarget';
+// import update from 'immutability-helper';
 
 const EmailDropdownList = (props) => {
 
@@ -45,17 +48,46 @@ const EmailDropdownList = (props) => {
         }
     }
 
+    const onNumberChange = (currIndex, newIndexTarget) => {
+        let newIndex = newIndexTarget.target.value - 1; 
+        let tempList = [...list];
+        console.log('asd', currIndex !== list.length - 2);
+        console.log('qwe', newIndex < currIndex);
+        if (!(currIndex === list.length - 2 && newIndex > currIndex)) {
+            let item = tempList.splice(currIndex, 1);
+            tempList.splice(newIndex, 0, ...item);
+            setList([...tempList]);
+        }
+    }
+
+    // DnD
+    // const moveItem = (dragIndex, hoverIndex) => {
+    //     const dragItem = list[dragIndex]
+    //     setList(
+    //       update(list, {
+    //         $splice: [
+    //           [dragIndex, 1],
+    //           [hoverIndex, 0, dragItem],
+    //         ],
+    //       }),
+    //     )
+    //   }
+
+
     return (
         <section>
             {
                 list.map((el, index) => {
-                    return <EmailDropdown 
-                            key={el.id} 
-                            number={index + 1} 
-                            inputValue={(oldVal, val, isBackspace) => inputValueChange(oldVal, val, isBackspace, el.id)} 
-                            removeItem={() => removeItem(el.id)} 
-                        />
-                    })
+                    return <EmailDropdown
+                                key={el.id} 
+                                // moveItem={moveItem}
+                                number={index + 1} 
+                                isLast={list.length - 1 === index}
+                                onNumberChange={(number) => onNumberChange(index, number)}
+                                inputValue={(oldVal, val, isBackspace) => inputValueChange(oldVal, val, isBackspace, el.id)} 
+                                removeItem={() => removeItem(el.id)} 
+                            />
+                        })
             }
         </section>
     );

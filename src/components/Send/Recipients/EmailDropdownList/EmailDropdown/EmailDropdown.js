@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react';
 import classes from './EmailDropdown.module.css';
+// import { DragSource, DropTarget } from 'react-dnd';
 
 const EmailDropdown = (props) => {
 
@@ -44,7 +45,7 @@ const EmailDropdown = (props) => {
     return (
         <div className={mainClass}>
             {/* number */}
-            {props.number ? <div className={classes['EmailDropdown-number']}>{props.number}</div> : null}
+            {props.number ? <input readOnly={props.isLast} type="number" className={classes['EmailDropdown-number']} value={props.number} onChange={props.onNumberChange}/> : null}
             {/* pencil icon */}
             <div className={classes['EmailDropdown-pencil']}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
