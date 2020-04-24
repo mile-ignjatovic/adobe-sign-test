@@ -3,16 +3,15 @@
   flex-direction: column;
 }
 .UploadUpper {
-  margin-left: 150px;
   display: flex;
   flex: row;
-  width: 40%;
+  width: 350px;
 }
 .UploadLower {
-  margin-left: 150px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  flex: row;
   border: 1px solid var(--darkGray);
   justify-content: center;
   height: max-content;
@@ -49,4 +48,13 @@
 }
 .UploadLower .FileRow:hover {
   cursor: pointer;
+}
+.UploadLower .UnorderedList {
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.UploadLower .ListItem {
+  list-style-type: none;
+  margin-left: 0px;
 }

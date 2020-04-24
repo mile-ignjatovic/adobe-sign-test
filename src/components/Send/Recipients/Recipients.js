@@ -3,8 +3,10 @@ import classes from './Recipients.module.css';
 import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
 import Toggle from '../../../shared/components/Toggle/Toggle';
 import Button from '../../../shared/components/Button/Button';
+import EmailDropdownList from './EmailDropdownList/EmailDropdownList';
 
 const Recipients = (props) => {
+    
     return (
         <div classes={classes.Recipients}>
             <SectionTitle>Recipients</SectionTitle>
@@ -20,23 +22,8 @@ const Recipients = (props) => {
                         <span>icon</span>
                     </div>
             </div>
-            <div className={classes['Recipients-dropdown']}>TODO: autocomplete dropdown</div>
+            <EmailDropdownList />
             <Button link>Show CC</Button>
-            <div className={classes['Recipients-main']}>
-                <div>
-                    <div className={classes['Recipients-main__message']}>
-                        <SectionTitle>Message</SectionTitle>
-                        <input />
-                        <textarea />
-                    </div>
-                    <div>
-                        TODO: file upload component
-                    </div>
-                </div>
-                <div>
-                    TODO: send options component
-                </div>
-            </div>
         </div>
     );
 }

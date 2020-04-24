@@ -1,18 +1,24 @@
 /* VARIABLES */
 /* TODO: check how to use variables with less */
 :root {
-  --normalBorder: 1px solid rgb(0, 0, 0, 0.2);
-  --strongBorder: 2px solid rgb(0, 0, 0, 0.5);
-  --strongerBorder: 2.5px solid rgb(32, 32, 32);
-  --appTextColor: rgba(0, 0, 0, 0.7);
-
-  --white: white;
-  --creamWhite: #ededed;
-  --darkWhite: whitesmoke;
-  --lightGray: #afafaf;
-  --darkGray: #7a7a7a;
-  --darkerGray: #525252;
-  --normalBlue: #007bff;
-  --darkBlue: #0051a8;
-  --darkerBlue: #0367d1;
+    --focusOutline: rgba(1, 103, 219, 0.479) auto 10px;
+    --normalBorder: 1px solid rgb(0,0,0,.2);
+    --strongBorder: 2px solid rgb(0,0,0,.5);
+    --strongerBorder: 2.5px solid rgb(32, 32, 32);
+  
+    /* TEXT */
+    --appTextColor: rgba(0,0,0,0.7);
+    --fontWeight: 500;
+  
+    /* COLORS */
+    --white: white;
+    --creamWhite: #ededed;
+    --darkWhite: whitesmoke;
+    --lightGray: #afafaf;
+    --darkGray: #7a7a7a;
+    --darkerGray: #525252;
+    --lightBlue: #d9ebff;
+    --normalBlue: #007bff;
+    --darkBlue: #0051a8;
+    --darkerBlue: #0367d1;
 }

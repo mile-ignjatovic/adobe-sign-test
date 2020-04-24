@@ -1,9 +1,10 @@
 import React, {useState}from 'react';
+import {generateId} from '../../utils/utils';
 import classes from './Toggle.module.css';
 
 const Toggle = (props) => {
 
-    const inputId = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
+    const inputId = generateId('Toggle');
 
     let [toggleState, setToggleState] = useState(props.checked ? !props.checked : true);
 

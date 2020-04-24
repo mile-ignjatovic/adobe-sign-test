@@ -19,44 +19,18 @@ function App() {
         exact
       />
       <Route
-        path="/SendPage"
+        path="/send"
         component={SendPage}
       />
       <Route
-        path="/ManagePage"
+        path="/manage"
         component={ManagePage}
       />
       <Route
-        path="/PlaygroundPage"
+        path="/playground"
         component={PlaygroundPage}
       />
     </BrowserRouter>
-
-    // <BrowserRouter>
-    //   <main className="App">
-    //     App works!
-    //     <hr />
-    //     Routing test:
-    //     <br />
-    //     <Link to="mobx">Test Mobx</Link>
-    //     <br />
-    //     <Link to="styled">Test StyledComponent</Link>
-
-    //     <Route path="/" exact component={Test} />
-    //     <MobxTestStoreProvider>
-    //       <Route path="/mobx" exact component={MobxTest} />
-    //     </MobxTestStoreProvider>
-    //     <Route path="/styled" exact component={StyledComponentTest} />
-    //   </main>
-    // </BrowserRouter>
-
-    // return (
-    //   <BrowserRouter>
-    //     <main className="App">
-    //     <Header />
-    //      <Send></Send>
-    //     </main>
-    //   </BrowserRouter>
   );
 }
 
