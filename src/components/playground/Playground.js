@@ -104,10 +104,10 @@ const Playground = (props) => {
                     <li>props.onInputChange: function - callback called on input change</li>
                     <li>props.onInputFocus: function - callback called on input focus change. returns true or false</li>
                 </ul>
-            <NormalInput size="50%"/>
-            <NormalInput placeholder="your placeholder" label="Your label" size="30%" backgroundColor="#eee"/>
+                <NormalInput size="50%" />
+                <NormalInput placeholder="your placeholder" label="Your label" size="30%" backgroundColor="#eee" />
                 <pre className={classes['Playground-pre']}>
-        {`<NormalInput size="50%"/>
+                    {`<NormalInput size="50%"/>
 <NormalInput placeholder="your placeholder" label="Your label" size="30%" backgroundColor="#eee"/>
 `}
                 </pre>
@@ -124,10 +124,10 @@ const Playground = (props) => {
                     <li>props.hideBottomBorder: boolean - if true no border-bottom</li>
                     <li>props.onTextChange: function - callback called on input change</li>
                 </ul>
-            <TextArea rows="2" size="50%"/>
-            <TextArea placeholder="your textarea placeholder" label="Your textarea label" size="30%"/>
+                <TextArea rows="2" size="50%" />
+                <TextArea placeholder="your textarea placeholder" label="Your textarea label" size="30%" />
                 <pre className={classes['Playground-pre']}>
-        {`<TextArea rows="2" size="50%"/>
+                    {`<TextArea rows="2" size="50%"/>
 <TextArea placeholder="your textarea placeholder" label="Your textarea label" size="30%"/>
 `}
                 </pre>

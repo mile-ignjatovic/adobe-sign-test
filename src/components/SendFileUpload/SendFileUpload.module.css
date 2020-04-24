@@ -1,21 +1,60 @@
 .UpladWindow {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 .UploadUpper {
   display: flex;
   flex: row;
-  width: 100%;
+  width: 350px;
 }
 .UploadLower {
+  margin-bottom: 100px;
   display: flex;
+  flex-direction: column;
   flex: row;
-  width: 100%;
   border: 1px solid var(--darkGray);
   justify-content: center;
+  height: max-content;
 }
-.UploadLower > h4 {
-  padding-top: 60px;
-  padding-bottom: 60px;
+.UploadLower .Default {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+.UploadLower .FileRow {
+  border-bottom: 0.5px solid var(--darkGray);
+  color: black;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 10px;
+}
+.UploadLower .FileRow img {
+  border-left: 1px var(--darkerGray) dotted;
+  padding-left: 5px;
+}
+.UploadLower .FileRow .File {
+  padding-left: 10px;
+}
+.UploadLower .FileRow .Close {
+  margin-left: auto;
+  color: var(--darkGray);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+.UploadLower .FileRow:hover {
+  cursor: pointer;
+}
+.UploadLower .UnorderedList {
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.UploadLower .ListItem {
+  list-style-type: none;
+  margin-left: 0px;
 }
