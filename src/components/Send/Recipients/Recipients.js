@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 import { useObserver } from 'mobx-react';
 import classes from './Recipients.module.css';
 import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
@@ -11,22 +11,34 @@ import { generateId } from '../../../shared/utils/utils';
 const Recipients = (props) => {
 
     const store = useContext(SendStoreContext);
-    const [addMe, setAddMe] = useState(false);
-    let [order, setOrder] = useState(false)
 
     const toggleHandler = (ev) => {
-        setOrder(ev)
+        store.setCompleteInOrder(ev)
     }
 
     const addMeToList = () => {
-        setAddMe(!addMe);
-        if (!addMe) {
-            store.setRecipientList([...store.recipientList, {id: generateId('list-item'), email: 'me@test.com', name: 'Me'}])
+        store.setAddMe()
+        let updatedList = [...store.recipientList];
+        if (!store.addMe) {
+            store.setAddMe(true)
+            let me = {id: generateId('list-item'), email: 'me@test.com', name: 'Me'};
+            if (updatedList.length === 1) {
+                updatedList.unshift(me);
+                store.setRecipientList(updatedList);
+            } else if (updatedList.length > 1) {
+                updatedList.splice(updatedList.length - 1, 0, me);
+                store.setRecipientList(updatedList);
+            }
         } else {
-            let newStore = store.recipientList.splice(store.recipientList.findIndex(el => el.name === 'Me'), 1);
-            store.setRecipientList([...newStore]);
+            store.setAddMe(false)
+            updatedList.splice(updatedList.findIndex(el => el.name === 'Me'), 1);
+            store.setRecipientList(updatedList);
         }
     }
+
+    let addMeBtn = useObserver(() => {
+        return <Button link click={() => addMeToList()}>{!store.addMe ? 'Add me' : ''}</Button>
+    })
     
     return (
         <div className={classes['Recipients']}>
@@ -36,14 +48,14 @@ const Recipients = (props) => {
                     toggleOptions={['Complete in order', 'Complete in Any Order']} 
                     toggle={(event) => toggleHandler(event)} />
                     <div className={classes['Recipients-buttons']}>
-                        <Button link click={() => addMeToList()}>{addMe ? 'Remove me' : 'Add me'}</Button>
+                        {addMeBtn}
                         <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
                         <Button link>Add Recipient Group</Button>
                         <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
                         <span>icon</span>
                     </div>
             </div>
-            <EmailDropdownList inOrder={order}/>
+            <EmailDropdownList/>
             <Button link>Show CC</Button>
         </div>
     );
