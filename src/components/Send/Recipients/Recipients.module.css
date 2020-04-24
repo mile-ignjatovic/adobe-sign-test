@@ -1,4 +1,22 @@
+.Recipients {
+  width: 55%;
+}
 .Recipients-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.Recipients-buttons {
+  margin: 1rem;
+}
+@media (max-width: 1024px) {
+  .Recipients {
+    width: 60%;
+  }
+}
+@media (max-width: 880px) {
+  .Recipients {
+    width: 80%;
+  }
 }
