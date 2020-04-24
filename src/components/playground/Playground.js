@@ -2,7 +2,7 @@ import React from 'react';
 import SectionTitle from '../../shared/components/SectionTitle/SectionTitle';
 import classes from './Playground.module.css';
 import Button from '../../shared/components/Button/Button';
-import Checkbox from '../../shared/components/checkbox/Checkbox';
+import Checkbox from '../../shared/components/Checkbox/Checkbox';
 import Card from '../../shared/components/Card/Card';
 import Toggle from '../../shared/components/Toggle/Toggle';
 import NormalInput from '../../shared/components/NormalInput/NormalInput';
