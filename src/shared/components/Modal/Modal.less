@@ -1,0 +1,36 @@
+.Modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-body {
+        z-index: 110;
+        width: 100%;
+        height: fit-content;
+        min-height: 30rem;
+        background-color: #fff;
+        &__content {
+            margin-top: 2rem!important;
+            width: 90%;
+            height: 90%;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
+
+.backDrop {
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+

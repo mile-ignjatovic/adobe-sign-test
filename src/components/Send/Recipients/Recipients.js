@@ -6,42 +6,46 @@ import Toggle from '../../../shared/components/Toggle/Toggle';
 import Button from '../../../shared/components/Button/Button';
 import EmailDropdownList from './EmailDropdownList/EmailDropdownList';
 import { SendStoreContext } from './../SendStore';
+import { AppStoreContext } from './../../../AppStore';
 import { generateId } from '../../../shared/utils/utils';
 
 const Recipients = (props) => {
 
-    const store = useContext(SendStoreContext);
+    const sendStore = useContext(SendStoreContext);
+    const appStore = useContext(AppStoreContext);
 
     const toggleHandler = (ev) => {
-        store.setCompleteInOrder(ev)
+        sendStore.setCompleteInOrder(ev)
     }
 
     const addMeToList = () => {
-        store.setAddMe()
-        let updatedList = [...store.recipientList];
-        if (!store.addMe) {
-            store.setAddMe(true)
+        sendStore.setAddMe()
+        let updatedList = [...sendStore.recipientList];
+        if (!sendStore.addMe) {
+            sendStore.setAddMe(true)
             let me = {id: generateId('list-item'), email: 'me@test.com', name: 'Me'};
             if (updatedList.length === 1) {
                 updatedList.unshift(me);
-                store.setRecipientList(updatedList);
+                sendStore.setRecipientList(updatedList);
             } else if (updatedList.length > 1) {
                 updatedList.splice(updatedList.length - 1, 0, me);
-                store.setRecipientList(updatedList);
+                sendStore.setRecipientList(updatedList);
             }
         } else {
-            store.setAddMe(false)
+            sendStore.setAddMe(false)
             updatedList.splice(updatedList.findIndex(el => el.name === 'Me'), 1);
-            store.setRecipientList(updatedList);
+            sendStore.setRecipientList(updatedList);
         }
     }
 
+    // TODO: make modal body for this instance
     const openTooltip = () => {
-        console.log('open tooltip', );
+        let modalContent = <div>Modal BODY</div>
+        appStore.showHideModal(modalContent)
     }
 
     let addMeBtn = useObserver(() => {
-        return <Button link click={() => addMeToList()}>{!store.addMe ? 'Add me' : ''}</Button>
+        return <Button link click={() => addMeToList()}>{!sendStore.addMe ? 'Add me' : ''}</Button>
     })
 
     let toolTipClass = [classes.tooltip, 'fa fa-question'].join(' ');
