@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import classes from './Send.module.css';
 import Recipients from './Recipients/Recipients';
 import SendFileUpolad from '../SendFileUpload/SendFileUpload'

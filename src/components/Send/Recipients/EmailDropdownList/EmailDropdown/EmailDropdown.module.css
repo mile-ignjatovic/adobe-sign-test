@@ -84,3 +84,23 @@
 .EmailDropdown-x:hover {
   color: var(--normalBlue);
 }
+.dropDown {
+  z-index: 100;
+  position: absolute;
+  top: 2rem;
+  left: -1px;
+  border: var(--normalBorder);
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dropDown-item {
+  padding: 0.2rem;
+  cursor: pointer;
+}
+.dropDown-item:hover {
+  background-color: var(--lightBlue);
+}

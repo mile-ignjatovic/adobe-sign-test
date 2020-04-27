@@ -19,6 +19,11 @@ const StoreProvider = ({ children }) => {
                 return deepCopy(el)
             });
             store.recipientList = copyArr;
+        },
+        // EmailList dropdown data
+        dropDownData: [],
+        setDropDownData: data => {
+            store.dropDownData = data;
         }
     }))
 

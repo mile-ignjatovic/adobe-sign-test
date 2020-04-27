@@ -4,6 +4,7 @@
     height: 2rem;
     border: var(--normalBorder);
     margin-bottom: .5rem;
+
     &-focus {
         outline: var(--focusOutline);
         background-color: var(--lightBlue);
@@ -40,7 +41,7 @@
         display: flex;
         align-items: center;
         margin-left: 1rem;
-
+        
         &__inputBox {
             width: 100%;
             input {
@@ -89,6 +90,27 @@
         
         &:hover {
             color: var(--normalBlue);
+        }
+    }
+}
+
+.dropDown {
+    z-index: 100;
+    position: absolute;
+    top: 2rem;
+    left: -1px;
+    border: var(--normalBorder);
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-item {
+        padding: .2rem;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--lightBlue);
         }
     }
 }

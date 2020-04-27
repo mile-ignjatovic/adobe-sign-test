@@ -36,9 +36,15 @@ const Recipients = (props) => {
         }
     }
 
+    const openTooltip = () => {
+        console.log('open tooltip', );
+    }
+
     let addMeBtn = useObserver(() => {
         return <Button link click={() => addMeToList()}>{!store.addMe ? 'Add me' : ''}</Button>
     })
+
+    let toolTipClass = [classes.tooltip, 'fa fa-question'].join(' ');
     
     return (
         <div className={classes['Recipients']}>
@@ -50,9 +56,7 @@ const Recipients = (props) => {
                     <div className={classes['Recipients-buttons']}>
                         {addMeBtn}
                         <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
-                        <Button link>Add Recipient Group</Button>
-                        <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
-                        <span>icon</span>
+                        <span><i onClick={openTooltip} className={toolTipClass} aria-hidden="true"></i></span>
                     </div>
             </div>
             <EmailDropdownList/>

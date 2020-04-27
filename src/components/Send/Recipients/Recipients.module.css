@@ -10,6 +10,15 @@
 .Recipients-buttons {
   margin: 1rem;
 }
+.tooltip {
+  color: #ffffff;
+  background: blue;
+  border-radius: 100px;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
 @media (max-width: 1024px) {
   .Recipients {
     width: 60%;
