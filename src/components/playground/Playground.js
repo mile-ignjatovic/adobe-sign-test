@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import SectionTitle from '../../shared/components/SectionTitle/SectionTitle';
 import classes from './Playground.module.css';
 import Button from '../../shared/components/Button/Button';
@@ -7,8 +7,12 @@ import Card from '../../shared/components/Card/Card';
 import Toggle from '../../shared/components/Toggle/Toggle';
 import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import TextArea from '../../shared/components/TextArea/TextArea';
+import {AppStoreContext} from '../../AppStore';
+import Modal from '../../shared/components/Modal/Modal';
 
 const Playground = (props) => {
+    const appStore = useContext(AppStoreContext);
+    let modalContent = <div>Dummy Modal Content</div>;
     return (
         <section className={classes.Playground}>
             <SectionTitle>Reusable components playground</SectionTitle>
@@ -129,6 +133,29 @@ const Playground = (props) => {
                 <pre className={classes['Playground-pre']}>
                     {`<TextArea rows="2" size="50%"/>
 <TextArea placeholder="your textarea placeholder" label="Your textarea label" size="30%"/>
+`}
+                </pre>
+            </Card>
+
+            <Card>
+                <SectionTitle>Modal component:</SectionTitle>
+                <ul>Inputs:
+                    <li>NONE: used with mobx AppStore.js</li>
+                    <p>To use the modal, you have to import AppStoreContext from where you want to open the modal and provide a jsx modal body content.</p>
+                    <p>Pressing X icon in the top right corner of the modal or by clicking on the backdrop the modal closes.</p>
+                </ul>
+                <Button click={() => appStore.showHideModal(modalContent)}>Open Modal</Button>
+                <pre className={classes['Playground-pre']}>
+                    {`import React, {useContext} from 'react'
+import {AppStoreContext} from './AppStore.js'
+
+const funcCmp = (props) => {
+    const appStore = useContext(AppStoreContext);
+    
+    let modalContent = <div>Dummy modal content</div>;
+   
+    return <div>Component content<button onClick={() => appStore.showHideModal(modalContent)}/></div>
+} 
 `}
                 </pre>
             </Card>
