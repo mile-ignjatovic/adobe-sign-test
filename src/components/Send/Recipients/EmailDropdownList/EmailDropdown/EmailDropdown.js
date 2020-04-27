@@ -27,6 +27,12 @@ const EmailDropdown = (props) => {
         let value = event.target.value;
         setCurrentRecipient({...currentRecipient, email: value, isLast: false});
 
+        updateList();
+        
+        // filterUsersForDropdown(value);
+    }
+
+    const updateList = () => {
         let updatedList = [...store.recipientList];
         let recipientIndex = updatedList.findIndex(el => currentRecipient && el.id === currentRecipient.id);
         updatedList[recipientIndex] = {...currentRecipient};
@@ -36,8 +42,6 @@ const EmailDropdown = (props) => {
         }
         
         store.setRecipientList(updatedList);
-        
-        // filterUsersForDropdown(value);
     }
 
     const onNumberChange = (event) => {
@@ -60,56 +64,77 @@ const EmailDropdown = (props) => {
         if (updatedList.length > 1) {
             updatedList.splice(updatedList.findIndex(el => el.id === currentRecipient.id), 1)
             store.setRecipientList(updatedList);
+            setCurrentRecipient(null)
         if (currentRecipient.name === 'Me') {
             store.setAddMe(false)
+            setCurrentRecipient(null)
             }
         }
     }
 
     const toggleEditMode = (bool) => {
+        setTimeout(() => {
         setEditMode(bool)   
        // hack to set the focus
        if (bool) {
-            setTimeout(() => {
                 // inputRef.current.value = currentInput;
                 inputRef.current.focus();
-            }, 200); 
-       }
+            }
+        }, 200); 
+    }
+    const itemSelected = (el) => {
+        setCurrentRecipient(el)
+        updateList();
     }
 
     let mainClass = [classes.EmailDropdown, editMode ? classes['EmailDropdown-focus'] : ''].join(' ')
     let numberBox = useObserver(() => {
-        return store.completeInOrder ? <input readOnly={currentRecipient.isLast} type="number" className={classes['EmailDropdown-number']} value={props.value.number ? props.value.number : 1} onChange={onNumberChange}/> : null
+        return store.completeInOrder ? <input readOnly={currentRecipient && currentRecipient.isLast} type="number" className={classes['EmailDropdown-number']} value={props.value.number ? props.value.number : 1} onChange={onNumberChange}/> : null
     })
 
+    let dropDownItems = useObserver(() => store.dropDownData.map(el => {
+        return <div 
+            key={el.id}
+            onClick={() => itemSelected(el)}
+            style={{paddingLeft: store.completeInOrder ? '16%' : '8%'}} 
+            className={classes['dropDown-item']}>
+                {el.name}
+            </div>
+    }));
+
     return (
-        <div className={mainClass}>
-            {numberBox}
-            <div className={classes['EmailDropdown-pencil']}>
-                <i className="fa fa-pencil" aria-hidden="true"></i>
-                <i className="fa fa-angle-down" aria-hidden="true"></i>
+            <div style={{position: 'relative'}} className={mainClass}>
+                {numberBox}
+                <div className={classes['EmailDropdown-pencil']}>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div  className={classes['EmailDropdown-inputContainer']} onClick={() => toggleEditMode(true)}>
+                    {editMode ? 
+                        <div className={classes['EmailDropdown-inputContainer__inputBox']}>
+                            <input 
+                                ref={inputRef} 
+                                type="text" 
+                                onBlur={() => toggleEditMode(false)} onChange={(event) => onInputChange(event)} 
+                                value={currentRecipient && currentRecipient.email ? currentRecipient.email : ''} />
+                        </div>
+                        : 
+                        <div className={currentRecipient && currentRecipient.email ? classes['EmailDropdown-inputContainer__selectedEmailBox'] : null}>{currentRecipient && (currentRecipient.name || currentRecipient.email)}</div>
+                    }
+                </div>
+                {editMode ? <div className={classes.dropDown}>{dropDownItems}</div> : null}
+                {currentRecipient && currentRecipient.email ? (
+                    <React.Fragment>
+                        <div className={classes['EmailDropdown-authenticationBox']}>
+                            <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                            <i className="fa fa-angle-down" aria-hidden="true"></i>
+                            <span>Email</span>
+                        </div>
+                        <div onClick={removeItem} className={classes['EmailDropdown-x']}><i className="fa fa-times" aria-hidden="true"></i></div>
+                    </React.Fragment>
+                ) : null }
             </div>
-            <div className={classes['EmailDropdown-inputContainer']} onClick={() => toggleEditMode(true)}>
-                {editMode ? 
-                    <div className={classes['EmailDropdown-inputContainer__inputBox']}>
-                        <input ref={inputRef} type="text" onBlur={() => toggleEditMode(false)} onChange={(event) => onInputChange(event)} value={currentRecipient && currentRecipient.email ? currentRecipient.email : ''} />
-                        {/* <div>{users}</div> */}
-                    </div>
-                    : 
-                    <div className={currentRecipient && currentRecipient.email ? classes['EmailDropdown-inputContainer__selectedEmailBox'] : null}>{currentRecipient && currentRecipient.email}</div>
-                }
-            </div>
-            {currentRecipient && currentRecipient.email ? (
-                <React.Fragment>
-                    <div className={classes['EmailDropdown-authenticationBox']}>
-                        <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                        <i className="fa fa-angle-down" aria-hidden="true"></i>
-                        <span>Email</span>
-                    </div>
-                    <div onClick={removeItem} className={classes['EmailDropdown-x']}><i className="fa fa-times" aria-hidden="true"></i></div>
-                </React.Fragment>
-            ) : null }
-        </div>
+
     );
 }
 
