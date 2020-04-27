@@ -141,10 +141,11 @@ const Playground = (props) => {
                 <SectionTitle>Modal component:</SectionTitle>
                 <ul>Inputs:
                     <li>NONE: used with mobx AppStore.js</li>
-                    <p>To use the modal, you have to import AppStoreContext from where you want to open the modal and provide a jsx modal body content.</p>
+                    <p>To use the modal, you have to import AppStoreContext from where you want to open the modal and provide a jsx modal body content and title as a string.</p>
+                    <p>Title is optional</p>
                     <p>Pressing X icon in the top right corner of the modal or by clicking on the backdrop the modal closes.</p>
                 </ul>
-                <Button click={() => appStore.showHideModal(modalContent)}>Open Modal</Button>
+                <Button click={() => appStore.showHideModal(modalContent, 'Modal Title')}>Open Modal</Button>
                 <pre className={classes['Playground-pre']}>
                     {`import React, {useContext} from 'react'
 import {AppStoreContext} from './AppStore.js'
@@ -154,7 +155,7 @@ const funcCmp = (props) => {
     
     let modalContent = <div>Dummy modal content</div>;
    
-    return <div>Component content<button onClick={() => appStore.showHideModal(modalContent)}/></div>
+    return <div>Component content<button onClick={() => appStore.showHideModal(modalContent, 'Modal Title')}/></div>
 } 
 `}
                 </pre>
