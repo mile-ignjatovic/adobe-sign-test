@@ -8,6 +8,7 @@ import EmailDropdownList from './EmailDropdownList/EmailDropdownList';
 import { SendStoreContext } from './../SendStore';
 import { AppStoreContext } from './../../../AppStore';
 import { generateId } from '../../../shared/utils/utils';
+import TooltipModal from './TooltipModal';
 
 const Recipients = (props) => {
 
@@ -40,8 +41,8 @@ const Recipients = (props) => {
 
     // TODO: make modal body for this instance
     const openTooltip = () => {
-        let modalContent = <div>Modal BODY</div>
-        appStore.showHideModal(modalContent)
+        let modalContent = (<TooltipModal />)
+        appStore.showHideModal(modalContent, 'Recipients')
     }
 
     let addMeBtn = useObserver(() => {

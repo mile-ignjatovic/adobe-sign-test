@@ -6,6 +6,7 @@ const Title = styled.span`
   font-weight: 600;
   display: inline-block;
   margin: 1rem 0;
+  margin-bottom: .5rem;
   `;
 
 const SectionTitle = (props) => {

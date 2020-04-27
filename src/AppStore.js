@@ -6,8 +6,8 @@ export const AppStoreContext = React.createContext();
 const AppStoreProvider = ({ children }) => {
     const store = useLocalStore(() => ({
         showModal: null,
-        showHideModal: (cmp) => {
-            store.showModal = cmp;
+        showHideModal: (body, title) => {
+                store.showModal = body ? {body, title} : null;
         }
     }))
 
