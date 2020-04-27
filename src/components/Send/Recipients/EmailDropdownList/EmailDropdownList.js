@@ -1,25 +1,20 @@
-import React, {useState, useEffect, useContext} from 'react';
-import axios from 'axios-observable';
+import React, { useContext, useEffect } from 'react';
 import EmailDropdown from './EmailDropdown/EmailDropdown';
 import { SendStoreContext } from '../../SendStore';
 import { useObserver } from 'mobx-react';
+import axios from 'axios-observable';
 
 const EmailDropdownList = (props) => {
 
     const store = useContext(SendStoreContext);
-    const [dropdownData, setDropdownData] = useState([]);
     
     useEffect(() => {
-        callBeForUsersList();
-    }, [])
-
-    const callBeForUsersList = (query) => {
-        axios.get('http://localhost:3001/users' + (query ? '?name=' + query : '')).subscribe(res => {
+        axios.get('http://localhost:3001/users').subscribe(res => {
             if (res && res.data && res.data.length > 0) {
-                setDropdownData(res.data);
+                store.setDropDownData(res.data);
             }
-        });
-    }
+        })
+    }, []);
 
     let emailList = useObserver(() => {
         return store.recipientList && store.recipientList.map(el => {

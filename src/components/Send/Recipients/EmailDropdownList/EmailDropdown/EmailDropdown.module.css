@@ -42,6 +42,25 @@
 }
 .EmailDropdown-inputContainer__inputBox {
   width: 100%;
+  position: relative;
+}
+.EmailDropdown-inputContainer__inputBox-dropdown {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  border: var(--normalBorder);
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.EmailDropdown-inputContainer__inputBox-dropdown-item {
+  padding: 0.2rem;
+  cursor: pointer;
+}
+.EmailDropdown-inputContainer__inputBox-dropdown-item:hover {
+  background-color: var(--lightBlue);
 }
 .EmailDropdown-inputContainer__inputBox input {
   width: 100%;

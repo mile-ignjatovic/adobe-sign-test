@@ -40,9 +40,29 @@
         display: flex;
         align-items: center;
         margin-left: 1rem;
-
+        
         &__inputBox {
             width: 100%;
+            position: relative;
+            
+            &-dropdown {
+                position: absolute;
+                top: 2rem;
+                left: 0;
+                border: var(--normalBorder);
+                width: 100%;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                &-item {
+                    padding: .2rem;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: var(--lightBlue);
+                    }
+                }
+            }
             input {
                 width: 100%;
                 font: inherit;
