@@ -1,0 +1,14 @@
+.Tooltip {
+  color: #ffffff;
+  background-color: var(--darkGray);
+  border-radius: 100px;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.1rem 0.1rem 0 0.1rem;
+  transition: background-color 0.2s ease;
+}
+.Tooltip:hover {
+  background-color: var(--normalBlue);
+}

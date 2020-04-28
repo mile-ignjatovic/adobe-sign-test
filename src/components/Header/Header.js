@@ -2,8 +2,8 @@
 import React from 'react';
 import style from './Header.module.css';
 import sunflower from '../../shared/Assets/sunflower50.png';
-import qmark16 from '../../shared/Assets/qmark16.png';
 import Navbar from '../Navbar/Navbar'
+import TooltipIcon from '../../shared/components/TooltipIcon/TooltipIcon';
 
 
 
@@ -21,7 +21,7 @@ const Header = (props) => {
                 <div className={style.HeaderRight}>
                     <button className={style.FirstButton}>Engage</button>
                     <button className={style.SecondButton}>New ?</button>
-                    <img src={qmark16} alt="qm" />
+                    <TooltipIcon styles={{paddingBottom: '.1rem'}} click={() => console.log('open some modal')}/>
                 </div>
             </div>
 

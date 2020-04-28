@@ -9,6 +9,7 @@ import { SendStoreContext } from './../SendStore';
 import { AppStoreContext } from './../../../AppStore';
 import { generateId } from '../../../shared/utils/utils';
 import TooltipModal from './TooltipModal';
+import TooltipIcon from '../../../shared/components/TooltipIcon/TooltipIcon';
 
 const Recipients = (props) => {
 
@@ -49,8 +50,6 @@ const Recipients = (props) => {
         return <Button link click={() => addMeToList()}>{!sendStore.addMe ? 'Add me' : ''}</Button>
     })
 
-    let toolTipClass = [classes.tooltip, 'fa fa-question'].join(' ');
-    
     return (
         <div className={classes['Recipients']}>
             <SectionTitle>Recipients</SectionTitle>
@@ -61,7 +60,7 @@ const Recipients = (props) => {
                     <div className={classes['Recipients-buttons']}>
                         {addMeBtn}
                         <span style={{margin: '0 .5rem', color: 'rgb(0,0,0,.5)'}}>|</span>
-                        <span><i onClick={openTooltip} className={toolTipClass} aria-hidden="true"></i></span>
+                        <TooltipIcon click={openTooltip}/>
                     </div>
             </div>
             <EmailDropdownList/>
