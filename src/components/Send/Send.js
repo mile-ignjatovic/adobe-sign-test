@@ -13,12 +13,12 @@ const Send = (props) => {
                 <section className={classes.Send}>
                     <Recipients></Recipients>
                     <div className={classes['Send-message']}>
-                        <div>
+                        <div className={classes.firstBox}>
                             <SectionTitle>Message</SectionTitle>
                             <Message />
                             <SendFileUpolad />
                         </div>
-                        <div>
+                        <div className={classes.secondBox}>
                             TODO: send options component
                         </div>
                     </div>

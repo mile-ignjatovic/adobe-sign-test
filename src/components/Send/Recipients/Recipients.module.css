@@ -1,5 +1,5 @@
 .Recipients {
-  width: 55%;
+  width: 100%;
 }
 .Recipients-header {
   display: flex;
@@ -18,14 +18,4 @@
   height: 1rem;
   text-align: center;
   cursor: pointer;
-}
-@media (max-width: 1024px) {
-  .Recipients {
-    width: 60%;
-  }
-}
-@media (max-width: 880px) {
-  .Recipients {
-    width: 80%;
-  }
 }
