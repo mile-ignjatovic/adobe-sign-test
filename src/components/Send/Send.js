@@ -5,6 +5,8 @@ import SendFileUpolad from '../SendFileUpload/SendFileUpload'
 import Message from './Message/Message';
 import SectionTitle from '../../shared/components/SectionTitle/SectionTitle';
 import StoreProvider from './SendStore';
+import Checkbox from '../../shared/components/Checkbox/Checkbox';
+import Button from '../../shared/components/Button/Button';
 
 const Send = (props) => {
 
@@ -22,6 +24,10 @@ const Send = (props) => {
                             <div className={classes.secondBox}>
                                 TODO: send options component
                             </div>
+                        </div>
+                        <div style={{marginTop: '2rem'}}>
+                            <Checkbox styles={{marginBottom: '1rem'}} checkboxChange={(value) => console.log('checkboxChange', value)}>Preview & Add Signature Fields</Checkbox>
+                            <Button click={() => console.log('next')}>Next</Button>
                         </div>
                     </div>
                 </section>

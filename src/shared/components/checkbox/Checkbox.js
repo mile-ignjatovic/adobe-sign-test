@@ -11,7 +11,7 @@ const Checkbox = (props) => {
     }
 
     return (
-       <div className={classes['Checkbox']}>
+       <div style={props.styles} className={classes['Checkbox']}>
            <input 
            name="checkbox"
            className={classes['Checkbox-input']} 
