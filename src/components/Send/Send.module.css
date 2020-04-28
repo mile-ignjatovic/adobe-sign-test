@@ -4,13 +4,15 @@
 }
 .Send-message {
   display: flex;
+  flex-direction: column;
 }
 .firstBox {
-  width: 47.5%;
+  width: 67.5%;
   margin-right: 5%;
 }
 .secondBox {
-  width: 47.5%;
+  width: 27.5%;
+  border: var(--normalBorder);
 }
 @media (max-width: 1024px) {
   .Send {
