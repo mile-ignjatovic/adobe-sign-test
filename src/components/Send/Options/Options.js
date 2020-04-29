@@ -4,6 +4,7 @@ import Checkbox from '../../../shared/components/Checkbox/Checkbox';
 import TooltipIcon from '../../../shared/components/TooltipIcon/TooltipIcon';
 import {AppStoreContext} from '../../../AppStore';
 import {SendStoreContext} from '../SendStore';
+import NormalInput from '../../../shared/components/NormalInput/NormalInput';
 
 const Options = (props) => {
 
@@ -11,6 +12,8 @@ const Options = (props) => {
     const sendStore = useContext(SendStoreContext);
 
     let [showTimeSelect, setShowTimeSelect] = useState(false);
+    let [showPassword, setShowPassword] = useState(false);
+    let [passwordObj, setPasswordObj] = useState({password: '', confirmPassword: ''});
 
     const openModal = () => {
         let modalBody = (<ModalBody />);
@@ -18,16 +21,24 @@ const Options = (props) => {
     }
 
     const passwordProtectChange = (value) => {
-        sendStore.setPasswordProtect(value)
+        setShowPassword(value);
+        setPasswordObj({password: '', confirmPassword: ''});
     }
 
     const setReminderChange = (value) => {
         setShowTimeSelect(value);
     }
-
     const selectChangeHandler = (value) => {
         sendStore.setReminder(value);
     } 
+
+    const passwordChangeHandler = (flag, value) => {
+        if (flag === 'pass') {
+            setPasswordObj({password: value, confirmPassword: passwordObj.confirmPassword})
+        } else if (flag === 'confirm') {
+            setPasswordObj({password: passwordObj.password, confirmPassword: value})
+        }
+    }
 
     let options = [];
     for (let key in TIME_SELECT_OPTIONS) {
@@ -43,11 +54,16 @@ const Options = (props) => {
                     <span style={{fontSize: '1rem'}}>Options</span>
                     <TooltipIcon click={() => openModal()}></TooltipIcon>
                 </div>
-                <div style={{display: 'flex', flexDirection: 'column', marginBottom: '1rem'}}>
+                <div className={classes['Options-inputBox']}>
                     <Checkbox checkboxChange={(value) => passwordProtectChange(value)}>Password Protect</Checkbox>
+                    {showPassword ? <div className={classes['Options-inputBox__password']}>
+                        <span>Password must contain from 3 to 32 characters</span>
+                        <NormalInput type='password' placeholder='Password' value={passwordObj.password} onInputChange={(ev) => passwordChangeHandler('pass', ev.target.value)}/>
+                        <NormalInput type='password' placeholder='Confirm password' value={passwordObj.confirmPassword} onInputChange={(ev) => passwordChangeHandler('confirm', ev.target.value)}/>
+                    </div> : null}
                     <br></br>
                     <Checkbox checkboxChange={(value) => setReminderChange(value)}>Set Reminder</Checkbox>
-                    {showTimeSelect ? <select style={{width: 'fit-content', marginTop: '1rem'}} onChange={(ev) => selectChangeHandler(ev.target.value)}>
+                    {showTimeSelect ? <select className={classes['Options-inputBox__reminder']} onChange={(ev) => selectChangeHandler(ev.target.value)}>
                         {options}
                     </select> : null}
                 </div>

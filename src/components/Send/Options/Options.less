@@ -11,4 +11,22 @@
         align-items: center;
         margin: 1rem 0;
     }
+
+    &-inputBox {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem; 
+        &__password {
+            >* {
+                margin-top: .5rem;
+                display: block;
+            }
+        }
+
+        &__reminder {
+            width: 100%;
+            height: 2rem;
+            margin-top: 1rem;
+        }
+    }
 }

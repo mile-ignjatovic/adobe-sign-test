@@ -9,7 +9,7 @@ const NormalInput = (props) => {
     const backgroundColor = props.backgroundColor ? {backgroundColor: props.backgroundColor} : null
     return (
         <div className={classes.NormalInput} 
-        style={{width: props.size}}
+        style={{width: props.size, ...props.styles}}
         >
             <label htmlFor={inputId} className={classes['NormalInput-label']}>{props.label}</label>
             <div className={classes['NormalInput-container']} >
@@ -17,7 +17,7 @@ const NormalInput = (props) => {
                     style={{...borderBottom, ...backgroundColor, ...borderLeft}}
                     id={inputId}
                     className={classes['NormalInput-container__el']} 
-                    type="text" 
+                    type={props.type ? props.type : 'text'} 
                     placeholder={props.placeholder} 
                     value={props.value} 
                     onChange={props.onInputChange}
