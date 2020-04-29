@@ -42,6 +42,11 @@ const StoreProvider = ({ children }) => {
         reminder: null,
         setReminder: (data) => {
             store.reminder = data;
+        },
+        // File upload
+        uploadedFiles: null,
+        setUploadedFiles: (files) => {
+            store.uploadedFiles = files;
         }
     }))
 

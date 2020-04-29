@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import classes from './SendFileUpload.module.css';
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
@@ -13,7 +13,11 @@ import TXTsymbolColor from '../../../shared/Assets/color/txt.png';
 import PDFsymbolColor from '../../../shared/Assets/color/pdf.png';
 import PPTsymbolColor from '../../../shared/Assets/color/ppt.png';
 
+import {SendStoreContext} from '../SendStore';
+
 const SendFileUpload = (props) => {
+
+    const sendStore = useContext(SendStoreContext);
 
     let [uploadedFiles, setUploadedFiles] = useState([]);
     let [defaultText, setDefaultText] = useState('Click to browse or Drag and drop files here');
@@ -61,13 +65,10 @@ const SendFileUpload = (props) => {
                 if (ev.dataTransfer.items[i].kind === 'file') {
                     let file = ev.dataTransfer.items[i].getAsFile();
                     let newFile = createFile(i, file.name, i);
-                    setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                    let tempUploadedFiles = [...uploadedFiles, newFile];
+                    setUploadedFiles(tempUploadedFiles);
+                    sendStore.setUploadedFiles(tempUploadedFiles);
                 }
-            }
-        }
-        else {
-            for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-                console.log('Items[' + i + '].name = ' + ev.dataTransfer.files[i].name);
             }
         }
     };
@@ -77,7 +78,9 @@ const SendFileUpload = (props) => {
     };
 
     const removeItem = (id) => {
-        setUploadedFiles(uploadedFiles => uploadedFiles.filter(item => item.id !== id));
+        let tempUploadedFiles = [...uploadedFiles].filter(item => item.id !== id);
+        setUploadedFiles(tempUploadedFiles);
+        sendStore.setUploadedFiles(tempUploadedFiles);
         if (uploadedFiles.length === 1) {
             setDefaultText(defaultText = 'Click to drag or Drag and drop files here');
         }
@@ -88,12 +91,12 @@ const SendFileUpload = (props) => {
     };
 
     const addUploadedFile = (event) => {
-        console.log('event', event);
-        console.log('event.target.files', event.target.files);
         let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
         if (!!file) {
             let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
-            setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+            let tempUploadedFiles = [...uploadedFiles, newFile];
+            setUploadedFiles(tempUploadedFiles);
+            sendStore.setUploadedFiles(tempUploadedFiles);
         }
     };
 
