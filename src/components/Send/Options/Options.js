@@ -14,6 +14,7 @@ const Options = (props) => {
 
     let [showTimeSelect, setShowTimeSelect] = useState(false);
     let [showPassword, setShowPassword] = useState(false);
+    let [showPasswordText, setShowPasswordText] = useState(false);
     let [passwordObj, setPasswordObj] = useState({password: {value: '', error: false}, confirmPassword: {value: '', error: false}});
 
     const openModal = () => {
@@ -46,6 +47,10 @@ const Options = (props) => {
             );
     }
 
+    const showPasswordHandler = (value) => {
+        setShowPasswordText(value);
+    }
+
     let options = [];
     for (let key in TIME_SELECT_OPTIONS) {
         if (key) {
@@ -64,8 +69,21 @@ const Options = (props) => {
                     <Checkbox checkboxChange={(value) => passwordProtectChange(value)}>Password Protect</Checkbox>
                     {showPassword ? <div className={classes['Options-inputBox__password']}>
                         <span>Password must contain from 3 to 32 characters</span>
-                        <NormalInput hasError={passwordObj.password.error} type='password' placeholder='Password' value={passwordObj.password.value} onInputChange={(ev) => passwordChangeHandler('pass', ev.target.value)}/>
-                        <NormalInput hasError={passwordObj.confirmPassword.error} type='password' placeholder='Confirm password' value={passwordObj.confirmPassword.value} onInputChange={(ev) => passwordChangeHandler('confirm', ev.target.value)}/>
+                        <NormalInput 
+                            hasError={passwordObj.password.error} 
+                            type={showPasswordText ? 'text' : 'password'} 
+                            placeholder='Password' 
+                            value={passwordObj.password.value} 
+                            onInputChange={(ev) => passwordChangeHandler('pass', ev.target.value)}/>
+                        <NormalInput 
+                            hasError={passwordObj.confirmPassword.error} 
+                            type={showPasswordText ? 'text' : 'password'} 
+                            placeholder='Confirm password' 
+                            value={passwordObj.confirmPassword.value} 
+                            onInputChange={(ev) => passwordChangeHandler('confirm', ev.target.value)}/>
+                        <Checkbox 
+                            styles={{fontSize: '.6rem', marginTop: '.5rem', display: 'flex', paddingLeft: '.5rem'}} 
+                            checkboxChange={(value) => showPasswordHandler(value)}>Show password</Checkbox>
                     </div> : null}
                     <br></br>
                     <Checkbox checkboxChange={(value) => setReminderChange(value)}>Set Reminder</Checkbox>
