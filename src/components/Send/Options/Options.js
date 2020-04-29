@@ -93,9 +93,9 @@ const ModalBody = () => {
     return (
         <div style={{textAlign: 'left'}}>
             <strong>Password Protect</strong>
-            <p>Require recipients to enter a password to open and view the signed PDF file.</p>
-            <strong>Set Reminder</strong>
-            <p>Set the frequency of reminders to be sent until the agreement is completed.</p>
+            <div>Require recipients to enter a password to open and view the signed PDF file.</div>
+            <strong style={{marginTop: '.5rem', display: 'block'}}>Set Reminder</strong>
+            <div>Set the frequency of reminders to be sent until the agreement is completed.</div>
         </div>
     )
 }

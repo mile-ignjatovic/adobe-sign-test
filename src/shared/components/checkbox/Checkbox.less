@@ -6,15 +6,15 @@
     &-input {
         -webkit-appearance: none;
         background-color: #fff;
-        border: var(--strongBorder);
+        border: var(--normalBorder);
         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
         padding: 6px;
         display: inline-block;
         position: relative;
         
         &:checked {
-            background-color: #fff;
-            border: var(--strongBorder);
+            background-color: var(--darkGray);
+            border: var(--normalBorder);
             box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
             color: rgba(0,0,0,0.5);;
     
@@ -25,16 +25,12 @@
                 position: absolute;
                 top: .5px;
                 left: 2px;
-                color: #000;  
-                background-color: #fff;     
+                color: #fff;  
+                background-color: var(--darkGray);     
             }
         }
     }
 }
-// .Checkbox-input {
-	
-// }
-
 
 .Checkbox-input:active, .Checkbox-input:checked:active {
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
