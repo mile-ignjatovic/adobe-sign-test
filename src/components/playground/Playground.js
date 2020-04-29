@@ -9,6 +9,7 @@ import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import TextArea from '../../shared/components/TextArea/TextArea';
 import {AppStoreContext} from '../../AppStore';
 import Modal from '../../shared/components/Modal/Modal';
+import TooltipIcon from '../../shared/components/TooltipIcon/TooltipIcon';
 
 const Playground = (props) => {
     const appStore = useContext(AppStoreContext);
@@ -158,6 +159,18 @@ const funcCmp = (props) => {
     return <div>Component content<button onClick={() => appStore.showHideModal(modalContent, 'Modal Title')}/></div>
 } 
 `}
+                </pre>
+            </Card>
+
+            <Card>
+                <SectionTitle>TooltipIcon component:</SectionTitle>
+                <ul>Inputs:
+                    <li>props.styles: object - pass custom styles</li>
+                    <li>props.click: function - callback called on tooltip click</li>
+                </ul>
+                <TooltipIcon click={() => alert('tooltip clicked')} />
+                <pre className={classes['Playground-pre']}>
+                    {`<TooltipIcon click={() => alert('tooltip clicked')} />`}
                 </pre>
             </Card>
 
