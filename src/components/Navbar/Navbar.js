@@ -5,7 +5,7 @@ import style from './Navbar.module.css';
 const Navbar = (props) => {
     return (
         <div className={style.Navbar}>
-            <NavLink to="/">Dashboard</NavLink>
+            <NavLink to="/">Home</NavLink>
             <NavLink to="/send">Send</NavLink>
             <NavLink to="/manage">Manage</NavLink>
             <NavLink to="/playground">Playground</NavLink>

@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import classes from './SendFileUpload.module.css';
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 
 import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
+import Button from '../../../shared/components/Button/Button';
 import { generateId } from '../../../shared/utils/utils';
 
 import EMPTYsymbol from '../../../shared/Assets/EMPTYsym.png';
@@ -18,9 +19,10 @@ import {SendStoreContext} from '../SendStore';
 const SendFileUpload = (props) => {
 
     const sendStore = useContext(SendStoreContext);
+    const fileUploadRef = useRef();
 
     let [uploadedFiles, setUploadedFiles] = useState([]);
-    let [defaultText, setDefaultText] = useState('Click to browse or Drag and drop files here');
+    let [defaultText, setDefaultText] = useState('Drag and drop files here');
     let fileIcon;
 
     const setIcon = (extension) => {
@@ -82,7 +84,7 @@ const SendFileUpload = (props) => {
         setUploadedFiles(tempUploadedFiles);
         sendStore.setUploadedFiles(tempUploadedFiles);
         if (uploadedFiles.length === 1) {
-            setDefaultText(defaultText = 'Click to drag or Drag and drop files here');
+            setDefaultText(defaultText = 'Drag and drop files here');
         }
     };
 
@@ -121,18 +123,25 @@ const SendFileUpload = (props) => {
         return null;
     });
 
+    const addFileBtnHandler = () => {
+        fileUploadRef.current.click();
+    }
+
     return (
         <div className={classes.UploadWindow}>
             <div className={classes.UploadUpper}>
                 <SectionTitle>Files</SectionTitle>
+                <Button styles={{marginTop: '1rem', marginBottom: '.2rem'}} link click={addFileBtnHandler}>Add File</Button>
             </div>
             {uploadedFiles && uploadedFiles.length > 0 ?<div class={classes.listBox}>
                 <SortableList items={uploadedFiles} onSortEnd={onSortEnd} />
             </div>:null}
-            <div style={{height: uploadedFiles && uploadedFiles.length > 0 ? '4.5rem' : '7rem'}} className={classes.UploadLower} onDrop={(ev) => dropHandler(ev)}
+            <div 
+                style={{height: uploadedFiles && uploadedFiles.length > 0 ? '4.5rem' : '7rem'}} 
+                className={classes.UploadLower} onDrop={(ev) => dropHandler(ev)}
                 onDragOver={(ev) => dragHandler(ev)}>
                 <span className={classes.Default}>{defaultText}</span>
-                <input className={classes.uploadInput} type="file"
+                <input ref={fileUploadRef} className={classes.uploadInput} type="file"
                     onChange={(ev) => addUploadedFile(ev)} />
             </div>
         </div>

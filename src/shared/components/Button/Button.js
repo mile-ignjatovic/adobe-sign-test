@@ -11,7 +11,7 @@ const Button = (props) => {
     let cls = props.link ? classes.Link : classes.Button;
 
     return (
-    <button className={cls} onClick={props.click}>{props.children}</button>
+    <button style={props.styles} className={cls} onClick={props.click}>{props.children}</button>
     );
 }
 

@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.module.css';
 import SendPage from './components/Send/Send';
 import PlaygroundPage from './components/playground/Playground';
-import DashboardPage from './components/DashboardPage';
+import Home from './components/Home';
 import ManagePage from './components/ManagePage';
 import Header from './components/Header/Header';
 import Modal from './shared/components/Modal/Modal';
@@ -18,7 +18,7 @@ function App() {
             <Header />
             <Route
               path="/"
-              component={DashboardPage}
+              component={Home}
               exact
             />
             <Route
