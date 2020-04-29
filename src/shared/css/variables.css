@@ -5,6 +5,7 @@
     --normalBorder: 1px solid rgb(0,0,0,.2);
     --strongBorder: 2px solid rgb(0,0,0,.5);
     --strongerBorder: 2.5px solid rgb(32, 32, 32);
+    --errorBorder: 1px solid #E34850;
   
     /* TEXT */
     --appTextColor: rgba(0,0,0,0.7);
@@ -21,4 +22,5 @@
     --normalBlue: #007bff;
     --darkBlue: #0051a8;
     --darkerBlue: #0367d1;
+    --lightRed: #E34850;
 }

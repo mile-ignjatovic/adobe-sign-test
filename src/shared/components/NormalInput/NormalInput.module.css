@@ -14,5 +14,13 @@
 }
 .NormalInput-container__el:focus {
   outline: var(--focusOutline);
-  background-color: var(--backgroundBlue) !important;
+}
+.NormalInput-container__hasError {
+  padding-right: 3rem!important;
+  box-shadow: none!important;
+  border: var(--errorBorder);
+  background: url('../../Assets/warning.svg') no-repeat scroll right center #fff;
+  background-color: #fff;
+  background-size: 1rem;
+  background-position-x: 95%;
 }

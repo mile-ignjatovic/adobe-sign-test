@@ -16,8 +16,17 @@
             box-sizing: border-box;
             &:focus {
                 outline: var(--focusOutline);
-                background-color: var(--backgroundBlue)!important;
             }
+        }
+
+        &__hasError {
+            padding-right: 3rem!important;
+            box-shadow: none!important;
+            border: var(--errorBorder);
+            background: url('../../Assets/warning.svg') no-repeat scroll right center #fff ;
+            background-color: #fff;
+            background-size: 1rem;
+            background-position-x: 95%;
         }
     }
 }
