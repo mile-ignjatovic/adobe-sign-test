@@ -5,6 +5,7 @@ import TooltipIcon from '../../../shared/components/TooltipIcon/TooltipIcon';
 import {AppStoreContext} from '../../../AppStore';
 import {SendStoreContext} from '../SendStore';
 import NormalInput from '../../../shared/components/NormalInput/NormalInput';
+import {deepCopy} from '../../../shared/utils/utils';
 
 const Options = (props) => {
 
@@ -13,7 +14,7 @@ const Options = (props) => {
 
     let [showTimeSelect, setShowTimeSelect] = useState(false);
     let [showPassword, setShowPassword] = useState(false);
-    let [passwordObj, setPasswordObj] = useState({password: '', confirmPassword: ''});
+    let [passwordObj, setPasswordObj] = useState({password: {value: '', error: false}, confirmPassword: {value: '', error: false}});
 
     const openModal = () => {
         let modalBody = (<ModalBody />);
@@ -22,7 +23,7 @@ const Options = (props) => {
 
     const passwordProtectChange = (value) => {
         setShowPassword(value);
-        setPasswordObj({password: '', confirmPassword: ''});
+        setPasswordObj({password: {value: '', error: false}, confirmPassword: {value: '', error: false}});
     }
 
     const setReminderChange = (value) => {
@@ -33,11 +34,16 @@ const Options = (props) => {
     } 
 
     const passwordChangeHandler = (flag, value) => {
-        if (flag === 'pass') {
-            setPasswordObj({password: value, confirmPassword: passwordObj.confirmPassword})
-        } else if (flag === 'confirm') {
-            setPasswordObj({password: passwordObj.password, confirmPassword: value})
-        }
+        let passError = false;
+        let confirmError = false;
+        passError = !(value === '') && (value.length < 3 || value.length > 32);
+        confirmError = passwordObj.password.value !== value;
+            setPasswordObj(
+                {
+                    password: flag === 'pass' ? {value: value, error: passError} : deepCopy(passwordObj.password), 
+                    confirmPassword: flag === 'confirm' ? {value: value, error: confirmError} : {...deepCopy(passwordObj.confirmPassword), error: value !== passwordObj.confirmPassword.value}
+                }
+            );
     }
 
     let options = [];
@@ -58,8 +64,8 @@ const Options = (props) => {
                     <Checkbox checkboxChange={(value) => passwordProtectChange(value)}>Password Protect</Checkbox>
                     {showPassword ? <div className={classes['Options-inputBox__password']}>
                         <span>Password must contain from 3 to 32 characters</span>
-                        <NormalInput type='password' placeholder='Password' value={passwordObj.password} onInputChange={(ev) => passwordChangeHandler('pass', ev.target.value)}/>
-                        <NormalInput type='password' placeholder='Confirm password' value={passwordObj.confirmPassword} onInputChange={(ev) => passwordChangeHandler('confirm', ev.target.value)}/>
+                        <NormalInput hasError={passwordObj.password.error} type='password' placeholder='Password' value={passwordObj.password.value} onInputChange={(ev) => passwordChangeHandler('pass', ev.target.value)}/>
+                        <NormalInput hasError={passwordObj.confirmPassword.error} type='password' placeholder='Confirm password' value={passwordObj.confirmPassword.value} onInputChange={(ev) => passwordChangeHandler('confirm', ev.target.value)}/>
                     </div> : null}
                     <br></br>
                     <Checkbox checkboxChange={(value) => setReminderChange(value)}>Set Reminder</Checkbox>

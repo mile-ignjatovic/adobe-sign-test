@@ -24,3 +24,6 @@
   background-size: 1rem;
   background-position-x: 95%;
 }
+.NormalInput-container__hasError:focus {
+  outline: var(--errorBorder);
+}
