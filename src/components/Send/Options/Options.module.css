@@ -1,0 +1,13 @@
+.Options {
+  border: var(--normalBorder);
+  background-color: var(--darkWhite);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.8rem;
+}
+.Options-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}

@@ -7,6 +7,7 @@ import SectionTitle from '../../shared/components/SectionTitle/SectionTitle';
 import StoreProvider from './SendStore';
 import Checkbox from '../../shared/components/Checkbox/Checkbox';
 import Button from '../../shared/components/Button/Button';
+import Options from './Options/Options';
 
 const Send = (props) => {
 
@@ -22,7 +23,7 @@ const Send = (props) => {
                                 <SendFileUpolad />
                             </div>
                             <div className={classes.secondBox}>
-                                TODO: send options component
+                                <Options></Options>
                             </div>
                         </div>
                         <div style={{marginTop: '2rem'}}>

@@ -24,6 +24,15 @@ const StoreProvider = ({ children }) => {
         dropDownData: [],
         setDropDownData: data => {
             store.dropDownData = data;
+        },
+        // Options data
+        passwordProtect: false,
+        setPasswordProtect: (data) => {
+            store.passwordProtect = data;
+        },
+        reminder: null,
+        setReminder: (data) => {
+            store.reminder = data;
         }
     }))
 
