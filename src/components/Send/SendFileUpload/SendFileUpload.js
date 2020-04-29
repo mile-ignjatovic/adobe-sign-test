@@ -1,0 +1,139 @@
+import React, { useState } from 'react';
+import classes from './SendFileUpload.module.css';
+
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
+
+import SectionTitle from '../../../shared/components/SectionTitle/SectionTitle';
+import { generateId } from '../../../shared/utils/utils';
+
+import EMPTYsymbol from '../../../shared/Assets/EMPTYsym.png';
+import JPGsymbolColor from '../../../shared/Assets/color/jpg.png';
+import TXTsymbolColor from '../../../shared/Assets/color/txt.png';
+import PDFsymbolColor from '../../../shared/Assets/color/pdf.png';
+import PPTsymbolColor from '../../../shared/Assets/color/ppt.png';
+
+const SendFileUpload = (props) => {
+
+    let [uploadedFiles, setUploadedFiles] = useState([]);
+    let [defaultText, setDefaultText] = useState('Click to browse or Drag and drop files here');
+    let fileIcon;
+
+    const setIcon = (extension) => {
+        switch (extension) {
+            case 'txt':
+                fileIcon = TXTsymbolColor;
+                break;
+            case 'jpg':
+                fileIcon = JPGsymbolColor;
+                break;
+            case 'pdf':
+                fileIcon = PDFsymbolColor;
+                break;
+            case 'ppt':
+                fileIcon = PPTsymbolColor;
+                break;
+            case 'pptx':
+                fileIcon = PPTsymbolColor;
+                break;
+            default:
+                fileIcon = EMPTYsymbol;
+        }
+        return fileIcon;
+    };
+
+    const createFile = (index, name, idNumber) => {
+        let newFile = {
+            index: index,
+            name: name,
+            extension: name.substring(name.lastIndexOf('.') + 1, name.length) || name,
+            id: generateId(idNumber)
+        };
+        return newFile;
+    };
+
+    const dropHandler = (ev) => {
+        setDefaultText(defaultText = 'Drag more files here or click to browse');
+        ev.preventDefault();
+
+        if (ev.dataTransfer.items) {
+            for (let i = 0; i < ev.dataTransfer.items.length; i++) {
+                if (ev.dataTransfer.items[i].kind === 'file') {
+                    let file = ev.dataTransfer.items[i].getAsFile();
+                    let newFile = createFile(i, file.name, i);
+                    setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                }
+            }
+        }
+        else {
+            for (let i = 0; i < ev.dataTransfer.files.length; i++) {
+                console.log('Items[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+            }
+        }
+    };
+
+    const dragHandler = (ev) => {
+        ev.preventDefault();
+    };
+
+    const removeItem = (id) => {
+        setUploadedFiles(uploadedFiles => uploadedFiles.filter(item => item.id !== id));
+        if (uploadedFiles.length === 1) {
+            setDefaultText(defaultText = 'Click to drag or Drag and drop files here');
+        }
+    };
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        setUploadedFiles(uploadedFiles => arrayMove(uploadedFiles, oldIndex, newIndex));
+    };
+
+    const addUploadedFile = (event) => {
+        console.log('event', event);
+        console.log('event.target.files', event.target.files);
+        let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
+        if (!!file) {
+            let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
+            setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+        }
+    };
+
+    const SortableItem = SortableElement(({ value }) => <li tabIndex={0} className={classes.ListItem}>{value}</li>);
+
+    const SortableList = SortableContainer(({ items }) => {
+        if (items && items.length > 0) {
+            return (
+                <ul className={classes.UnorderedList}>
+                    {items.map((item, i) => (
+                        <SortableItem key={`item-${item}`} index={i} value={
+                            <div id={i} className={classes.FileRow}>
+                                <img className={classes.FileIcon} src={setIcon(item.extension)} alt="xx" />
+                                <span className={classes.File}>{item.name}</span>
+                                <button className={classes.Close} onClick={() => removeItem(item.id)}>✖</button>
+                            </div>
+                        } />
+                    ))}
+                </ul>
+            )
+        }
+        return null;
+    });
+
+    return (
+        <div className={classes.UploadWindow}>
+            <div className={classes.UploadUpper}>
+                <SectionTitle>Files</SectionTitle>
+            </div>
+            {uploadedFiles && uploadedFiles.length > 0 ?<div class={classes.listBox}>
+                <SortableList items={uploadedFiles} onSortEnd={onSortEnd} />
+            </div>:null}
+            <div className={classes.UploadLower} onDrop={(ev) => dropHandler(ev)}
+                onDragOver={(ev) => dragHandler(ev)}>
+                <span className={classes.Default}>{defaultText}</span>
+                <input className={classes.uploadInput} type="file"
+                    onChange={(ev) => addUploadedFile(ev)} />
+            </div>
+        </div>
+    )
+}
+
+export default SendFileUpload;

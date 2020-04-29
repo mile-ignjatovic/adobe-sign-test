@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Send.module.css';
 import Recipients from './Recipients/Recipients';
-import SendFileUpolad from '../SendFileUpload/SendFileUpload'
+import SendFileUpload from './SendFileUpload/SendFileUpload'
 import Message from './Message/Message';
 import SectionTitle from '../../shared/components/SectionTitle/SectionTitle';
 import StoreProvider from './SendStore';
@@ -20,7 +20,7 @@ const Send = (props) => {
                         <div style={{display: 'flex'}}>
                             <div className={classes.firstBox}>
                                 <Message />
-                                <SendFileUpolad />
+                                <SendFileUpload />
                             </div>
                             <div className={classes.secondBox}>
                                 <Options></Options>

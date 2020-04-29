@@ -14,7 +14,8 @@ const EmailDropdownList = (props) => {
                 store.setDropDownData(res.data);
             }
         })
-    }, []);
+        // dont know if this dependency should be here
+    }, [store]);
 
     let emailList = useObserver(() => {
         return store.recipientList && store.recipientList.map(el => {

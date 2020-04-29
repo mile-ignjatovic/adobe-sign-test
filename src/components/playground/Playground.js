@@ -8,7 +8,6 @@ import Toggle from '../../shared/components/Toggle/Toggle';
 import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import TextArea from '../../shared/components/TextArea/TextArea';
 import {AppStoreContext} from '../../AppStore';
-import Modal from '../../shared/components/Modal/Modal';
 import TooltipIcon from '../../shared/components/TooltipIcon/TooltipIcon';
 
 const Playground = (props) => {
