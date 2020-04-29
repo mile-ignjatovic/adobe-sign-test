@@ -7,12 +7,11 @@
   flex-direction: column;
 }
 .firstBox {
-  width: 67.5%;
+  width: 62.5%;
   margin-right: 5%;
 }
 .secondBox {
-  width: 27.5%;
-  border: var(--normalBorder);
+  width: 32.5%;
 }
 @media (max-width: 1024px) {
   .Send {

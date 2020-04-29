@@ -33,6 +33,15 @@ const StoreProvider = ({ children }) => {
         agreementText: '',
         setAgreementText: (data) => {
             store.agreementText = data;
+        },
+        // Options data
+        passwordProtect: false,
+        setPasswordProtect: (data) => {
+            store.passwordProtect = data;
+        },
+        reminder: null,
+        setReminder: (data) => {
+            store.reminder = data;
         }
     }))
 

@@ -2,6 +2,7 @@
   display: flex;
   width: fit-content;
   font-size: inherit;
+  align-items: center;
 }
 .Checkbox-input {
   -webkit-appearance: none;
@@ -20,12 +21,13 @@
 }
 .Checkbox-input:checked:after {
   content: '\2714';
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 600;
   position: absolute;
-  top: 0px;
+  top: 0.5px;
   left: 2px;
   color: #000;
+  background-color: #fff;
 }
 .Checkbox-input:active,
 .Checkbox-input:checked:active {

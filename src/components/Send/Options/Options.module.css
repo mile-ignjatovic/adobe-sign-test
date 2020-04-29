@@ -1,0 +1,27 @@
+.Options {
+  border: var(--normalBorder);
+  background-color: var(--darkWhite);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.8rem;
+}
+.Options-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+.Options-inputBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.Options-inputBox__password > * {
+  margin-top: 0.5rem;
+  display: block;
+}
+.Options-inputBox__reminder {
+  width: 100%;
+  height: 2rem;
+  margin-top: 1rem;
+}

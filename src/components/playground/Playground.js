@@ -9,6 +9,7 @@ import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import TextArea from '../../shared/components/TextArea/TextArea';
 import {AppStoreContext} from '../../AppStore';
 import Modal from '../../shared/components/Modal/Modal';
+import TooltipIcon from '../../shared/components/TooltipIcon/TooltipIcon';
 
 const Playground = (props) => {
     const appStore = useContext(AppStoreContext);
@@ -107,6 +108,7 @@ const Playground = (props) => {
                     <li>props.backgroundColor: expect color string eg.: '#eeeeee'</li>
                     <li>props.onInputChange: function - callback called on input change</li>
                     <li>props.onInputFocus: function - callback called on input focus change. returns true or false</li>
+                    <li>props.hasError: boolean - signifies if the input has an validation error</li>
                 </ul>
                 <NormalInput size="50%" />
                 <NormalInput placeholder="your placeholder" label="Your label" size="30%" backgroundColor="#eee" />
@@ -161,6 +163,21 @@ const funcCmp = (props) => {
                 </pre>
             </Card>
 
+            <Card>
+                <SectionTitle>TooltipIcon component:</SectionTitle>
+                <ul>Inputs:
+                    <li>props.styles: object - pass custom styles</li>
+                    <li>props.click: function - callback called on tooltip click</li>
+                </ul>
+                <TooltipIcon click={() => alert('tooltip clicked')} />
+                <pre className={classes['Playground-pre']}>
+                    {`<TooltipIcon click={() => alert('tooltip clicked')} />`}
+                </pre>
+            </Card>
+            
+            <Card>
+            Icons made by <a href="https://www.flaticon.com/authors/pixelmeetup" title="Pixelmeetup">Pixelmeetup</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+            </Card>
         </section>
     );
 }
