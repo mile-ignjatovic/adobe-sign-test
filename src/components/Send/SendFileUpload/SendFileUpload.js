@@ -126,7 +126,7 @@ const SendFileUpload = (props) => {
             {uploadedFiles && uploadedFiles.length > 0 ?<div class={classes.listBox}>
                 <SortableList items={uploadedFiles} onSortEnd={onSortEnd} />
             </div>:null}
-            <div className={classes.UploadLower} onDrop={(ev) => dropHandler(ev)}
+            <div style={{height: uploadedFiles && uploadedFiles.length > 0 ? '4.5rem' : '7rem'}} className={classes.UploadLower} onDrop={(ev) => dropHandler(ev)}
                 onDragOver={(ev) => dragHandler(ev)}>
                 <span className={classes.Default}>{defaultText}</span>
                 <input className={classes.uploadInput} type="file"

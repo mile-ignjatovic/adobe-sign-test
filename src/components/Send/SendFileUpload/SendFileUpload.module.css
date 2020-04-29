@@ -1,6 +1,7 @@
-.UpladWindow {
+.UploadWindow {
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
 .UploadUpper {
   display: flex;
@@ -14,7 +15,6 @@
   flex: row;
   border: var(--normalBorder);
   justify-content: center;
-  height: 7rem;
 }
 .UnorderedList {
   padding-left: 0px;
