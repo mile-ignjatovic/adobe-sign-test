@@ -24,6 +24,15 @@ const StoreProvider = ({ children }) => {
         dropDownData: [],
         setDropDownData: data => {
             store.dropDownData = data;
+        },
+        // Message component
+        agreementName: '',
+        setAgreementName: (data) => {
+            store.agreementName = data;
+        },
+        agreementText: '',
+        setAgreementText: (data) => {
+            store.agreementText = data;
         }
     }))
 
