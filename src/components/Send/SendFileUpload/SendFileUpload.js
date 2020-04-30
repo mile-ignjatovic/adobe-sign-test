@@ -64,12 +64,11 @@ const SendFileUpload = (props) => {
 
         if (ev.dataTransfer.items) {
             for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-                if (ev.dataTransfer.items[i].kind === 'file') {
+                if (ev.dataTransfer.items[i].kind === 'file') {                   
                     let file = ev.dataTransfer.items[i].getAsFile();
                     let newFile = createFile(i, file.name, i);
-                    let tempUploadedFiles = [...uploadedFiles, newFile];
-                    setUploadedFiles(tempUploadedFiles);
-                    sendStore.setUploadedFiles(tempUploadedFiles);
+                    setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                    // TODO: implement add to store 
                 }
             }
         }
@@ -96,9 +95,8 @@ const SendFileUpload = (props) => {
         let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
         if (!!file) {
             let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
-            let tempUploadedFiles = [...uploadedFiles, newFile];
-            setUploadedFiles(tempUploadedFiles);
-            sendStore.setUploadedFiles(tempUploadedFiles);
+            setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+            // TODO: implement add to store
         }
     };
 
