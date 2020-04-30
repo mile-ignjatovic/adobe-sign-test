@@ -47,6 +47,21 @@ const StoreProvider = ({ children }) => {
         uploadedFiles: null,
         setUploadedFiles: (files) => {
             store.uploadedFiles = files;
+        },
+        // final agreement
+        agreement: null,
+        setAgreement: () => {
+            // TODO: check this. its not ok
+            store.agreement = {
+                name: store.agreementName,
+                text: store.agreementText,
+                completeInOrder: store.completeInOrder,
+                recipients: store.recipientList,
+                password: store.passwordProtect,
+                reminder: store.reminder,
+                files: store.files
+            }
+            console.log('sotore agrement', store.agreement);
         }
     }))
 
