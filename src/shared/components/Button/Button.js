@@ -8,7 +8,9 @@ import classes from './Button.module.css';
  */
 const Button = (props) => {
 
-    let cls = props.link ? classes.Link : classes.Button;
+    let cls = props.link ? classes['Button-link'] : classes['Button-normal'];
+    cls = props.action ? classes['Button-action'] : cls;
+    cls = [cls, classes.Button].join(' ');
 
     return (
     <button style={props.styles} className={cls} onClick={props.click}>{props.children}</button>

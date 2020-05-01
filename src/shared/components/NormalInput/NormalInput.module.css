@@ -1,8 +1,11 @@
 .NormalInput-label {
   width: 100%;
 }
+.NormalInput-container {
+  position: relative;
+}
 .NormalInput-container__el {
-  padding: 0 1rem!important;
+  padding-left: 2rem!important;
   color: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -11,9 +14,24 @@
   padding: 0;
   border: var(--normalBorder);
   box-sizing: border-box;
+  transition: all 0.4s ease;
+}
+.NormalInput-container__el::placeholder {
+  font-style: italic;
+  font-size: 0.8rem;
 }
 .NormalInput-container__el:focus {
   outline: var(--focusOutline);
+}
+.NormalInput-container__el:hover {
+  border: var(--normalBorder2);
+}
+.NormalInput-container > i {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 1.2rem;
+  color: var(--darkGray);
 }
 .NormalInput-container__hasError {
   padding-right: 3rem!important;

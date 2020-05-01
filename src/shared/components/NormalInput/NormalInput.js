@@ -8,6 +8,7 @@ const NormalInput = (props) => {
     const borderLeft = props.hideBorderLeft ? {borderLeft: 'none'} : null
     const backgroundColor = props.backgroundColor ? {backgroundColor: props.backgroundColor} : null
     const inputClass = [classes['NormalInput-container__el'], props.hasError ? classes['NormalInput-container__hasError'] : ''].join(' ');
+
     return (
         <div className={classes.NormalInput} 
         style={{width: props.size, ...props.styles}}
@@ -24,6 +25,7 @@ const NormalInput = (props) => {
                     onChange={props.onInputChange}
                     onBlur={() => props.onInputFocus ? props.onInputFocus(false) : null}
                     onFocus={() => props.onInputFocus ? props.onInputFocus(true) : null}/>
+                    {props.search ? <i className="fa fa-search" aria-hidden="true"></i> : null}
             </div>
         </div>
     );

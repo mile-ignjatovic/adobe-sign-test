@@ -3,6 +3,7 @@
 :root {
     --focusOutline: rgba(1, 103, 219, 0.479) auto 10px;
     --normalBorder: 1px solid rgb(0,0,0,.2);
+    --normalBorder2: 1px solid rgb(0,0,0,.5);
     --strongBorder: 2px solid rgb(0,0,0,.5);
     --strongerBorder: 2.5px solid rgb(32, 32, 32);
     --errorBorder: 1px solid #E34850;
