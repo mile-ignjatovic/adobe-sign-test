@@ -14,7 +14,9 @@ const Manage = (props) => {
     const filterClickHandler = () => {
         console.log('filter');
     }
-
+    // props.history.listen((location, action) => {
+    //     console.log('location', location.hash);
+    // });
     return (
         <div className={classes.Manage}>
             <div className={classes['Manage-header']}>
@@ -28,7 +30,7 @@ const Manage = (props) => {
             </div>
          
             <div className={classes['Manage-body']}>
-                <SideMenu></SideMenu>
+                <SideMenu {...props}></SideMenu>
                 { tableData && tableData.length > 0 ?  
                     <Table></Table> : 
                     <div className={classes['Manage-body__noData']}>
