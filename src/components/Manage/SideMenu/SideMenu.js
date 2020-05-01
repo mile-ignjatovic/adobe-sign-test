@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './SideMenu.module.css';
 import { NavLink } from 'react-router-dom';
 
 
 const SideMenu = (props) => {
 
+    let [selected, setSelected] = useState(false);
+
     const navItems = [
-        {label: 'In Progress', link: '#in-progress'},
-        {label: 'Waiting for You', link: '#waiting'},
-        {label: 'Completed', link: '#completed'},
-        {label: 'Canceled', link: '#canceled'},
-        {label: 'Expired', link: '#expired'},
-        {label: 'Draft', link: '#draft'}
+        {label: selected ? 'All' : '', link: '', message: 'All agreements.'},
+        {label: 'In Progress', link: '#in-progress', message: 'After sending an agreement for signing, it\'ll appear here.'},
+        {label: 'Waiting for You', link: '#waiting', message: 'Agreements waiting for your signature or approval will appear here.'},
+        {label: 'Completed', link: '#completed', message: 'Once all recipients sign or approve an agreement, it\'ll appear here.'},
+        {label: 'Canceled', link: '#canceled', message: 'If you cancel agreement, it\'ll appear here.'},
+        {label: 'Expired', link: '#expired', message: 'If an agreement expires, it\'ll appear here.'},
+        {label: 'Draft', link: '#draft', message: 'If you didn\'t finish an agreement it\'ll appear here.'}
     ];
 
     let nav = navItems.map((el, index) => {
@@ -22,9 +25,14 @@ const SideMenu = (props) => {
                         backgroundColor: 'var(--lighterGray)'
                     }}
                     isActive={(_, location) => {
+                        setSelected(true)
                         return location.hash === el.link;
                     }}
-                    to={props.history.location.pathname + el.link}><span className={classes.span}>{el.label}</span></NavLink>
+                    to={{
+                        pathname: props.history.location.pathname,
+                        hash: el.link,
+                        state: {label: el.label, message: el.message}
+                    }}><span className={classes.span}>{el.label}</span></NavLink>
             </div>
         )
     })

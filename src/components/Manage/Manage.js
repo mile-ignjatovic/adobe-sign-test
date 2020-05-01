@@ -10,13 +10,17 @@ const Manage = (props) => {
 
     let [searchValue, setSearchValue] = useState('');
     let [tableData, setTableData] = useState('');
+    let [metadata, setMetadata] = useState({title: 'All', message: 'All agreements.'});
 
     const filterClickHandler = () => {
         console.log('filter');
     }
-    // props.history.listen((location, action) => {
-    //     console.log('location', location.hash);
-    // });
+
+    // url change listener
+    props.history.listen((location, action) => {
+        setMetadata({title: location.state && location.state.label, message: location.state && location.state.message})
+    });
+
     return (
         <div className={classes.Manage}>
             <div className={classes['Manage-header']}>
@@ -31,13 +35,18 @@ const Manage = (props) => {
          
             <div className={classes['Manage-body']}>
                 <SideMenu {...props}></SideMenu>
-                { tableData && tableData.length > 0 ?  
-                    <Table></Table> : 
-                    <div className={classes['Manage-body__noData']}>
-                        <div>There are no Agreements</div>
-                        <Button click={() => props.history.push('/send')}>Send an Agreement</Button>
-                    </div>
-                }
+                <div className={classes['Manage-body__content']}>
+                    <SectionTitle styles={{paddingLeft: '2rem'}}>{metadata.title}</SectionTitle>
+                    { tableData && tableData.length > 0 ?  
+                        <Table></Table> : 
+                        <div className={classes['Manage-body__content-noData']}>
+                            <img style={{width: '8rem', height: 'auto'}} src={require('../../shared/Assets/contract.png')} alt='contract'/>
+                            <div style={{paddingBottom: '.5rem', fontWeight: '300', fontSize: '2rem'}}>There are no Agreements</div>
+                            <div style={{paddingBottom: '1.5rem'}}>{metadata.message}</div>
+                            <Button click={() => props.history.push('/send')}>Send an Agreement</Button>
+                        </div>
+                    }
+                </div>
             </div> 
         </div>
     );

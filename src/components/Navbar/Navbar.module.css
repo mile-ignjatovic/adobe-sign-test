@@ -4,6 +4,7 @@
   align-content: left;
   padding: 10px 0 0 10px;
   background-color: var(--creamWhite);
+  height: 2rem;
 }
 .Navbar :nth-child(n) {
   margin-right: 18px;

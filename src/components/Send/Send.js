@@ -45,7 +45,7 @@ const RouteBox = (props) => {
         // check if agreement value is valid TODO:
         // else tell why its not valid
         sendStore.setAgreement();
-        props.history.push('/manage')
+        props.history.push('/manage#in-progress')
     }
     return <Button click={handleClick}>Next</Button>
 }
