@@ -1,6 +1,5 @@
 import { useLocalStore } from 'mobx-react';
 import React from 'react';
-import { generateId, deepCopy } from './../../shared/utils/utils';
   
 function createData(dataSet) {
   let {recipients, title, modified} = dataSet;
