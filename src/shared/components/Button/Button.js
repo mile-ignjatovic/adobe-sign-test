@@ -8,9 +8,25 @@ import classes from './Button.module.css';
  */
 const Button = (props) => {
 
-    let cls = props.link ? classes['Button-link'] : classes['Button-normal'];
-    cls = props.action ? classes['Button-action'] : cls;
-    cls = [cls, classes.Button].join(' ');
+    let cls;
+
+    switch(props.type) {
+        case 'link': {
+            cls = classes['Button-link'];
+            break;
+        }
+        case 'action': {
+            cls = classes['Button-action'];
+            break;
+        }
+        case 'white': {
+            cls = classes['Button-white'];
+            break
+        }
+        default: cls = classes['Button-normal'];
+    }
+
+    cls = [classes.Button, cls].join(' ');
 
     return (
     <button style={props.styles} className={cls} onClick={props.click}>{props.children}</button>

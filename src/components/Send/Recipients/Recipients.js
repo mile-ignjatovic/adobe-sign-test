@@ -47,7 +47,7 @@ const Recipients = (props) => {
     }
 
     let addMeBtn = useObserver(() => {
-        return <Button link click={() => addMeToList()}>{!sendStore.addMe ? 'Add me' : ''}</Button>
+        return <Button type='link' click={() => addMeToList()}>{!sendStore.addMe ? 'Add me' : ''}</Button>
     })
 
     return (
@@ -64,7 +64,7 @@ const Recipients = (props) => {
                     </div>
             </div>
             <EmailDropdownList/>
-            <Button link>Show CC</Button>
+            <Button type='link'>Show CC</Button>
         </div>
     );
 }

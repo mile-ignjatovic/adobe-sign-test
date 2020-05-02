@@ -1,0 +1,23 @@
+.ValueBox {
+    position: relative;
+    .ButtonGroup {
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+    }
+    
+    .Value {
+        visibility: visible;
+    }
+
+    &:hover {
+        .Value {
+            visibility: hidden;
+        }
+
+        .ButtonGroup {
+            visibility: visible;
+        }
+    }
+}
