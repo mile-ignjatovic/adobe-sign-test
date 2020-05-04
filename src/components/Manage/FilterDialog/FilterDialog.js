@@ -9,7 +9,7 @@ const TIME_SELECT_OPTIONS = {
     LAST_7_DAYS: 'Last 7 days',
     LAST_30_DAYS: 'Last 30 days',
     LAST_12_MONTHS: 'Last 12 months',
-    CUSTOM_DATE: 'Custom Date Range',
+    // CUSTOM_DATE: 'Custom Date Range',
 }
 
 const FilterDialog = (props) => {
