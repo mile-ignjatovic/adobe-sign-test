@@ -1,0 +1,38 @@
+.Manage {
+  width: 100%;
+  height: 100%;
+}
+.Manage-header {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Manage-header__filter {
+  display: flex;
+}
+.Manage-body {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 10.5rem);
+  border: var(--normalBorder);
+  box-sizing: border-box;
+}
+.Manage-body__content {
+  width: 100%;
+}
+.Manage-body__content-noData {
+  width: 100%;
+  height: calc(100vh - 14.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.paddingLeft {
+  padding-left: 2rem;
+}
+.paddingRight {
+  padding-right: 2rem;
+}

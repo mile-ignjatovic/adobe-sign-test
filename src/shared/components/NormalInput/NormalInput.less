@@ -3,9 +3,9 @@
         width: 100%;
     }
     &-container {
-
+        position: relative;
         &__el {
-            padding: 0 1rem!important;
+            padding-left: 2rem!important;
             color: inherit;
             font-size: inherit;
             font-weight: inherit;
@@ -14,9 +14,26 @@
             padding: 0;
             border: var(--normalBorder);
             box-sizing: border-box;
+            transition: all .4s ease;
+            &::placeholder {
+                font-style: italic;
+                font-size: .8rem;
+            }
             &:focus {
                 outline: var(--focusOutline);
             }
+
+            &:hover {
+                border: var(--normalBorder2);
+            }
+        }
+
+        > i {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            font-size: 1.2rem;
+            color: var(--darkGray)
         }
 
         &__hasError {

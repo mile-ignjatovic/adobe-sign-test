@@ -11,7 +11,7 @@ const Title = styled.span`
 
 const SectionTitle = (props) => {
   return (
-        <Title>{props.children}</Title>
+        <Title style={props.styles}>{props.children}</Title>
   );
 }
 

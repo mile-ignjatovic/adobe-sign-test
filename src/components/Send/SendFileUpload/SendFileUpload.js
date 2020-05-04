@@ -129,7 +129,7 @@ const SendFileUpload = (props) => {
         <div className={classes.UploadWindow}>
             <div className={classes.UploadUpper}>
                 <SectionTitle>Files</SectionTitle>
-                <Button styles={{marginTop: '1rem', marginBottom: '.2rem'}} link click={addFileBtnHandler}>Add File</Button>
+                <Button styles={{marginTop: '1rem', marginBottom: '.2rem'}} type='link' click={addFileBtnHandler}>Add File</Button>
             </div>
             {uploadedFiles && uploadedFiles.length > 0 ?<div class={classes.listBox}>
                 <SortableList items={uploadedFiles} onSortEnd={onSortEnd} />

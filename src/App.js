@@ -4,7 +4,7 @@ import './App.module.css';
 import SendPage from './components/Send/Send';
 import PlaygroundPage from './components/playground/Playground';
 import Home from './components/Home';
-import ManagePage from './components/ManagePage';
+import Manage from './components/Manage/Manage';
 import Header from './components/Header/Header';
 import Modal from './shared/components/Modal/Modal';
 
@@ -27,7 +27,7 @@ function App() {
             />
             <Route
               path="/manage"
-              component={ManagePage}
+              component={Manage}
             />
             <Route
               path="/playground"

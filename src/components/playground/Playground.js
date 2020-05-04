@@ -31,16 +31,16 @@ const Playground = (props) => {
             <Card>
                 <SectionTitle>Button component:</SectionTitle>
                 <ul>Inputs:
-                    <li>link: true/false - indicates if a button should look like a link</li>
+                    <li>type: 'link | action | white | null' - indicates how a button should look like</li>
                     <li>click: function - callback to call on click</li>
                     <li>props.children: string - label for the button</li>
                 </ul>
                 <Button click={() => console.log('Button was clicked')}>Button Label</Button>
                 <br />
-                <Button link click={() => console.log('Link Button was clicked')}>Link Label</Button>
+                <Button type='link' click={() => console.log('Link Button was clicked')}>Link Label</Button>
                 <pre className={classes['Playground-pre']}>
                     {`<Button click={yourCallback}>Button Label</Button>
-<Button link click={yourCallback}>Link Label</Button>
+<Button type='link' click={yourCallback}>Link Label</Button>
         `}
                 </pre>
             </Card>

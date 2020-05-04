@@ -1,0 +1,27 @@
+.SideMenu {
+  width: 20%;
+  padding: 0 1rem;
+  background-color: var(--darkWhite);
+  height: 100%;
+}
+.SideMenu-items {
+  margin-top: 1rem;
+  transition: all 0.4s ease;
+}
+.SideMenu-items__navItem > * {
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 0.3rem;
+  border-radius: 5px;
+  width: 100%;
+  display: block;
+  transition: all 0.4s ease;
+  padding: 0.3rem 0;
+}
+.SideMenu-items__navItem :hover {
+  background-color: var(--lighterGray);
+}
+.span {
+  padding-left: 1rem;
+  display: inline-block;
+}
