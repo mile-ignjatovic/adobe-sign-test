@@ -23,7 +23,7 @@
 }
 .Button-link {
   padding: 0;
-  background-color: #fff;
+  background-color: transparent;
   color: var(--normalBlue);
   font-weight: 500;
 }

@@ -1,14 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './SideMenu.module.css';
 import { NavLink } from 'react-router-dom';
 
 
 const SideMenu = (props) => {
 
-    let [selected, setSelected] = useState(false);
-
     const navItems = [
-        {label: selected ? 'All' : '', link: '', message: 'All agreements.'},
+        {label: 'All', link: '', message: 'All agreements.'},
         {label: 'In Progress', link: '#in-progress', message: 'After sending an agreement for signing, it\'ll appear here.'},
         {label: 'Waiting for You', link: '#waiting', message: 'Agreements waiting for your signature or approval will appear here.'},
         {label: 'Completed', link: '#completed', message: 'Once all recipients sign or approve an agreement, it\'ll appear here.'},
@@ -25,7 +23,6 @@ const SideMenu = (props) => {
                         backgroundColor: 'var(--lighterGray)'
                     }}
                     isActive={(_, location) => {
-                        setSelected(true)
                         return location.hash === el.link;
                     }}
                     to={{

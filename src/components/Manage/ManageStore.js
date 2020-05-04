@@ -25,7 +25,7 @@ export const ManageStoreContext = React.createContext();
 
 const StoreProvider = ({ children }) => {
     const store = useLocalStore(() => ({
-        // Recipient cmp
+        // TODO: connect this data with the output of SendStore.js agreements
         tableDataSet: rows,
         setTableDataSet: data => store.tableDataSet = data,
     }))

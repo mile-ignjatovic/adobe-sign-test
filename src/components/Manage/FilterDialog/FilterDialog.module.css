@@ -1,0 +1,34 @@
+.FilterDialog {
+  background: #fff;
+  position: absolute;
+  height: 10.5rem;
+  width: 22rem;
+  z-index: 7;
+  border-radius: 5px;
+  top: 2.5rem;
+  border: var(--normalBorder);
+  -webkit-box-shadow: 2px 3px 6px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 3px 6px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 3px 6px -4px rgba(0, 0, 0, 0.75);
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.FilterDialog-select {
+  width: 100%;
+  height: 2rem;
+  margin-top: 1rem;
+}
+.FilterDialog-buttonBox {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.FilterDialog-active {
+  opacity: 1;
+}
+@media (max-width: 470px) {
+  .FilterDialog {
+    left: -30%;
+  }
+}

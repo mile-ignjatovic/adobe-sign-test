@@ -33,6 +33,7 @@ const useStyles = makeStyles({
 });
   
 const StickyHeadTable = (props) => {
+     // TODO: show different dataSets based on the filter input
     const manageStore = useContext(ManageStoreContext);
     const tableClasses = useStyles();
     const [page, setPage] = React.useState(0);
@@ -53,7 +54,7 @@ const StickyHeadTable = (props) => {
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
-                            {columns.map((column) => (
+                            {columns && columns.map((column) => (
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
@@ -66,10 +67,10 @@ const StickyHeadTable = (props) => {
                     </TableHead>
 
                     <TableBody>
-                        {manageStore.tableDataSet.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                        {manageStore.tableDataSet.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                    {columns.map((column) => {
+                                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                                    {columns && columns.map((column) => {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
