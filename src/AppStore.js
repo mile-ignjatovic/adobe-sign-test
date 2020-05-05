@@ -8,6 +8,15 @@ const AppStoreProvider = ({ children }) => {
         showModal: null,
         showHideModal: (body, title) => {
                 store.showModal = body ? {body, title} : null;
+        },
+        filteredAgreements: [],
+        setFilteredAgreements: (data) => {
+            // TODO: create filter logic
+            store.filteredAgreements = store.agreements;
+        },
+        agreements: [],
+        setAgreements: (data) => {
+            store.agreements = data;
         }
     }))
 

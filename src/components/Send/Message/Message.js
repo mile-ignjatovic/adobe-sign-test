@@ -19,7 +19,7 @@ const Message = (props) => {
             clearTimeout(timer);
         }
         let tempTimer = setTimeout(() => {
-            store.setAgreementName(value)
+            store.setTitle(value)
         }, 200)
         setTimer(tempTimer);
     }

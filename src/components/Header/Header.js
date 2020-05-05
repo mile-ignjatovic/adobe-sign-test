@@ -21,7 +21,7 @@ const Header = (props) => {
                 <div className={style.HeaderRight}>
                     <button className={style.FirstButton}>Engage</button>
                     <button className={style.SecondButton}>New ?</button>
-                    <TooltipIcon styles={{paddingBottom: '.1rem'}} click={() => console.log('open some modal')}/>
+                    <TooltipIcon styles={{paddingBottom: '.1rem'}} click={() => alert('open some modal')}/>
                 </div>
             </div>
 

@@ -28,7 +28,7 @@ const Send = (props) => {
                             </div>
                         </div>
                         <div style={{marginTop: '2rem'}}>
-                            <Checkbox styles={{marginBottom: '1rem'}} checkboxChange={(value) => console.log('checkboxChange', value)}>Preview & Add Signature Fields</Checkbox>
+                            <Checkbox styles={{marginBottom: '1rem'}} checkboxChange={(value) => alert('checkboxChange', value)}>Preview & Add Signature Fields</Checkbox>
                             <RouteBox {...props}>Next</RouteBox>
                         </div>
                     </div>
@@ -47,6 +47,13 @@ const RouteBox = (props) => {
         // check if agreement value is valid TODO:
         // else tell why its not valid
         sendStore.setAgreement();
+
+        let agreement = {...sendStore.agreement, modified: new Date().toDateString()};
+        let tempAgreements = [...appStore.agreements];
+
+        tempAgreements.push(agreement);
+
+        appStore.setAgreements(tempAgreements);
         props.history.push('/manage#in-progress')
     }
     return <Button click={handleClick}>Next</Button>

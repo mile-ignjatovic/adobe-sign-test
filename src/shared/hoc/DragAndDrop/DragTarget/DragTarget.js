@@ -10,7 +10,7 @@ const DragTarget = (props) => {
             const item = document.getElementById(itemId);
             
             item.style.display = 'block';
-            console.log(e.nativeEvent.target.children[0].firstChild)
+            alert(e.nativeEvent.target.children[0].firstChild)
             e.target.appendChild(item);
             for (let i = 0; i < e.nativeEvent.target.children.length; i++) {
                 e.nativeEvent.target.children[i].firstChild.firstChild.innerHTML = i + 1;

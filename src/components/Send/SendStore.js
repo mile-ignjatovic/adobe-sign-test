@@ -26,9 +26,9 @@ const StoreProvider = ({ children }) => {
             store.dropDownData = data;
         },
         // Message component
-        agreementName: '',
-        setAgreementName: (data) => {
-            store.agreementName = data;
+        title: '',
+        setTitle: (data) => {
+            store.title = data;
         },
         agreementText: '',
         setAgreementText: (data) => {
@@ -54,7 +54,7 @@ const StoreProvider = ({ children }) => {
             // TODO: check this. its not ok
             store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
             store.agreement = {
-                agreementName: store.agreementName,
+                title: store.title,
                 agreementText: store.agreementText,
                 recipients: store.recipientList && [...store.recipientList],
                 password: store.passwordProtect,

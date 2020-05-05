@@ -5,13 +5,15 @@ import Button from '../../shared/components/Button/Button';
 import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import SideMenu from './SideMenu/SideMenu';
 import StickyHeadTable from './StickyHeadTable/StickyHeadTable';
-import StoreProvider, {ManageStoreContext} from './ManageStore';
+// import StoreProvider, {ManageStoreContext} from './ManageStore';
 import FilterDialog from './FilterDialog/FilterDialog';
+import {AppStoreContext} from '../../AppStore';
 
 const BodyContainer = (props) => {
-    const manageStore = useContext(ManageStoreContext);
+    const appStore = useContext(AppStoreContext);
     // TODO: show different dataSets based on the filter input
-    return  <React.Fragment>{ manageStore.tableDataSet && manageStore.tableDataSet.length > 0 ?
+    console.log('appstore', appStore.agreements);
+    return  <React.Fragment>{ appStore.agreements && appStore.agreements.length > 0 ?
         <StickyHeadTable></StickyHeadTable> : 
         <div className={classes['Manage-body__content-noData']}>
             <img style={{width: '8rem', height: 'auto'}} src={require('../../shared/Assets/contract.png')} alt='contract'/>
@@ -43,28 +45,26 @@ const Manage = (props) => {
     });
 
     return (
-        <StoreProvider>
-            <div className={classes.Manage}>
-                <div className={classes['Manage-header']}>
-                    <div className={classes.paddingLeft}>
-                        <SectionTitle styles={{margin: '0'}}>Your agreements</SectionTitle>
-                    </div>
-                    <div className={[classes['Manage-header__filter'], classes.paddingRight].join(' ')}>
-                        <FilterDialog selected={(value) => filterSelectHandler(value)} cancel={filterClickHandler} show={showFilter}></FilterDialog>
-                        <Button styles={{marginRight: '.5rem'}} type='action' click={filterClickHandler}><i className="fa fa-filter" aria-hidden="true"></i>Filter</Button>
-                        <NormalInput size={'20rem'} placeholder='Search for agreements and users' value={searchValue} onInputChange={(event) => setSearchValue(event.target.value)} search></NormalInput>
-                    </div>
+        <div className={classes.Manage}>
+            <div className={classes['Manage-header']}>
+                <div className={classes.paddingLeft}>
+                    <SectionTitle styles={{margin: '0'}}>Your agreements</SectionTitle>
                 </div>
-            
-                <div className={classes['Manage-body']}>
-                    <SideMenu {...props}></SideMenu>
-                    <div className={classes['Manage-body__content']}>
-                        <SectionTitle styles={{paddingLeft: '2rem'}}>{metadata.title}</SectionTitle>
-                        <BodyContainer {...props} metadata={metadata}></BodyContainer>
-                    </div>
-                </div> 
+                <div className={[classes['Manage-header__filter'], classes.paddingRight].join(' ')}>
+                    <FilterDialog selected={(value) => filterSelectHandler(value)} cancel={filterClickHandler} show={showFilter}></FilterDialog>
+                    <Button styles={{marginRight: '.5rem'}} type='action' click={filterClickHandler}><i className="fa fa-filter" aria-hidden="true"></i>Filter</Button>
+                    <NormalInput size={'20rem'} placeholder='Search for agreements and users' value={searchValue} onInputChange={(event) => setSearchValue(event.target.value)} search></NormalInput>
+                </div>
             </div>
-        </StoreProvider>
+        
+            <div className={classes['Manage-body']}>
+                <SideMenu {...props}></SideMenu>
+                <div className={classes['Manage-body__content']}>
+                    <SectionTitle styles={{paddingLeft: '2rem'}}>{metadata.title}</SectionTitle>
+                    <BodyContainer {...props} metadata={metadata}></BodyContainer>
+                </div>
+            </div> 
+        </div>
     );
 }
 

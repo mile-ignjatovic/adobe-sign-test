@@ -34,7 +34,7 @@ const FilterDialog = (props) => {
             <select className={classes['FilterDialog-select']} onChange={(ev) => selectChangeHandler(ev.target.value)}>
                 {options}
             </select>
-            <Checkbox styles={{marginTop: '1rem'}} checkboxChange={(ev) => console.log('display hidden content', ev)}>Display hidden content</Checkbox>
+            <Checkbox styles={{marginTop: '1rem'}} checkboxChange={(ev) => alert('display hidden content', ev)}>Display hidden content</Checkbox>
             <div className={classes['FilterDialog-buttonBox']}>
                 <Button click={() => props.selected(null)} type='link'>Clear all</Button>
                 <div>

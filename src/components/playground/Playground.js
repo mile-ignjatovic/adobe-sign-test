@@ -35,9 +35,9 @@ const Playground = (props) => {
                     <li>click: function - callback to call on click</li>
                     <li>props.children: string - label for the button</li>
                 </ul>
-                <Button click={() => console.log('Button was clicked')}>Button Label</Button>
+                <Button click={() => alert('Button was clicked')}>Button Label</Button>
                 <br />
-                <Button type='link' click={() => console.log('Link Button was clicked')}>Link Label</Button>
+                <Button type='link' click={() => alert('Link Button was clicked')}>Link Label</Button>
                 <pre className={classes['Playground-pre']}>
                     {`<Button click={yourCallback}>Button Label</Button>
 <Button type='link' click={yourCallback}>Link Label</Button>
@@ -52,8 +52,8 @@ const Playground = (props) => {
                     <li>checked: boolean - set starting state</li>
                     <li>props.children: string - label for the checkbox</li>
                 </ul>
-                <Checkbox checkboxChange={(event) => { console.log('Checkbox state: ' + event) }}>Checkbox label</Checkbox>
-                <Checkbox checked={true} checkboxChange={(event) => { console.log('Checkbox state: ' + event) }}>Checked Checkbox label</Checkbox>
+                <Checkbox checkboxChange={(event) => { alert('Checkbox state: ' + event) }}>Checkbox label</Checkbox>
+                <Checkbox checked={true} checkboxChange={(event) => { alert('Checkbox state: ' + event) }}>Checked Checkbox label</Checkbox>
                 <pre className={classes['Playground-pre']}>
                     {`<Checkbox checkboxChange={yourCallback}>Checkbox label</Checkbox>
 <Checkbox 
@@ -74,18 +74,18 @@ const Playground = (props) => {
                 <Toggle
                     checked={true}
                     toggleOptions={['False option label', 'True option label']}
-                    toggle={(event) => { console.log('Toggle state: ' + event) }} />
+                    toggle={(event) => { alert('Toggle state: ' + event) }} />
                 <br />
                 <Toggle
                     toggleOptions={['Only false option label']}
-                    toggle={(event) => { console.log('Toggle state: ' + event) }} />
+                    toggle={(event) => { alert('Toggle state: ' + event) }} />
                 <br />
                 <Toggle
                     toggleOptions={[undefined, 'Only True option label']}
-                    toggle={(event) => { console.log('Toggle state: ' + event) }} />
+                    toggle={(event) => { alert('Toggle state: ' + event) }} />
                 <br />
                 <Toggle
-                    toggle={(event) => { console.log('Toggle state: ' + event) }} />
+                    toggle={(event) => { alert('Toggle state: ' + event) }} />
                 <pre className={classes['Playground-pre']}>
                     {`<Toggle checked={true} toggle={(event) => {yourCallback} 
     toggleOptions={['False option label', 'True option label']}/>

@@ -10,7 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import classes from './StickyHeadTable.module.css';
 import Button from '../../../shared/components/Button/Button';
-import {ManageStoreContext} from '../ManageStore';
+import {AppStoreContext} from '../../../AppStore';
 
 const columns = [
   { id: 'recipients', label: 'RECIPIENTS', minWidth: 170 },
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   
 const StickyHeadTable = (props) => {
      // TODO: show different dataSets based on the filter input
-    const manageStore = useContext(ManageStoreContext);
+    const appStore = useContext(AppStoreContext);
     const tableClasses = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -67,14 +67,14 @@ const StickyHeadTable = (props) => {
                     </TableHead>
 
                     <TableBody>
-                        {manageStore.tableDataSet.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+                        {appStore.filteredAgreements.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                                     {columns && columns.map((column) => {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
-                                                {column.id !== 'modified' ? value : (
+                                                {column.id !== 'modified' ? column.id === 'recipients' ? value[0].email : value : (
                                                     <div className={classes.ValueBox}>
                                                         <div className={classes.ButtonGroup}>
                                                             <Button>Open</Button>
@@ -99,7 +99,7 @@ const StickyHeadTable = (props) => {
             <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
-                count={manageStore.tableDataSet.length}
+                count={appStore.filteredAgreements.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={handleChangePage}
