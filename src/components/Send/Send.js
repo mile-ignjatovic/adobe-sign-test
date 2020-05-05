@@ -54,7 +54,7 @@ const RouteBox = (props) => {
         tempAgreements.push(agreement);
 
         appStore.setAgreements(tempAgreements);
-        props.history.push('/manage#in-progress')
+        setTimeout(() => props.history.push('/manage#in-progress'), 200)
     }
     return <Button click={handleClick}>Next</Button>
 }

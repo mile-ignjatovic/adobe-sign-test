@@ -5,7 +5,6 @@ import Button from '../../shared/components/Button/Button';
 import NormalInput from '../../shared/components/NormalInput/NormalInput';
 import SideMenu from './SideMenu/SideMenu';
 import StickyHeadTable from './StickyHeadTable/StickyHeadTable';
-// import StoreProvider, {ManageStoreContext} from './ManageStore';
 import FilterDialog from './FilterDialog/FilterDialog';
 import {AppStoreContext} from '../../AppStore';
 

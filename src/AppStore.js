@@ -17,6 +17,8 @@ const AppStoreProvider = ({ children }) => {
         agreements: [],
         setAgreements: (data) => {
             store.agreements = data;
+            // TODO: create filter logic
+            store.filteredAgreements = data;
         }
     }))
 
