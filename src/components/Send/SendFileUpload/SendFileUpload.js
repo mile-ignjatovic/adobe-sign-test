@@ -58,6 +58,20 @@ const SendFileUpload = (props) => {
         return newFile;
     };
 
+    const checkIfFileIsSupported = (fileName) => {
+        let flag = false;
+        const FILE_TYPES = {
+            TXT: 'txt', JPG: 'jpg', JPEG: 'jpeg', PDF: 'pdf', PPT: 'ppt', PPTX: 'pptx', DOCX: 'docx', DOC: 'doc'
+        };
+        for (let key in FILE_TYPES) {
+            if (fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) === FILE_TYPES[key]) {
+                flag = true; 
+                return flag;    
+            }
+        }
+        return flag;
+    }
+
     const dropHandler = (ev) => {
         setDefaultText(defaultText = 'Drag more files here or click to browse');
         ev.preventDefault();
@@ -66,9 +80,11 @@ const SendFileUpload = (props) => {
             for (let i = 0; i < ev.dataTransfer.items.length; i++) {
                 if (ev.dataTransfer.items[i].kind === 'file') {                   
                     let file = ev.dataTransfer.items[i].getAsFile();
-                    let newFile = createFile(i, file.name, i);
-                    setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
-                    fileList.push(newFile);
+                    if (checkIfFileIsSupported(file.name)) {
+                        let newFile = createFile(i, file.name, i);
+                        setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                        fileList.push(newFile);
+                    }
                 }
             }
         }
@@ -95,10 +111,12 @@ const SendFileUpload = (props) => {
     const addUploadedFile = (event) => {
         let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
         if (!!file) {
+            if (checkIfFileIsSupported(file)) {
             let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
             let fileList = [...uploadedFiles, newFile];
-            setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
-            sendStore.setUploadedFiles(fileList);
+                setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                sendStore.setUploadedFiles(fileList);
+            }
         }
     };
 
@@ -133,7 +151,7 @@ const SendFileUpload = (props) => {
                 <SectionTitle>Files</SectionTitle>
                 <Button styles={{marginTop: '1rem', marginBottom: '.2rem'}} type='link' click={addFileBtnHandler}>Add File</Button>
             </div>
-            {uploadedFiles && uploadedFiles.length > 0 ?<div class={classes.listBox}>
+            {uploadedFiles && uploadedFiles.length > 0 ? <div className={classes.listBox}>
                 <SortableList items={uploadedFiles} onSortEnd={onSortEnd} />
             </div>:null}
             <div 

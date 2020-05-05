@@ -11,7 +11,6 @@ import {AppStoreContext} from '../../AppStore';
 const BodyContainer = (props) => {
     const appStore = useContext(AppStoreContext);
     // TODO: show different dataSets based on the filter input
-    console.log('appstore', appStore.agreements);
     return  <React.Fragment>{ appStore.agreements && appStore.agreements.length > 0 ?
         <StickyHeadTable></StickyHeadTable> : 
         <div className={classes['Manage-body__content-noData']}>

@@ -51,7 +51,7 @@ const StoreProvider = ({ children }) => {
         // final agreement
         agreement: null,
         setAgreement: () => {
-            // TODO: check this. its not ok
+            // TODO: check components for validation errors
             store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
             store.agreement = {
                 title: store.title,
