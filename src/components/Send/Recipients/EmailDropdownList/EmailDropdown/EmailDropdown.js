@@ -56,7 +56,6 @@ const EmailDropdown = (props) => {
             updatedList[updatedList.length - 1] = {...value, isLast: false};
         }
 
-
         if (!updatedList[recipientIndex + 1]) {
             updatedList.push({id: generateId('list-item'), isLast: true});
         }

@@ -39,12 +39,12 @@ const Options = (props) => {
         let confirmError = false;
         passError = !(value === '') && (value.length < 3 || value.length > 32);
         confirmError = passwordObj.password.value !== value;
-            setPasswordObj(
-                {
-                    password: flag === 'pass' ? {value: value, error: passError} : deepCopy(passwordObj.password), 
-                    confirmPassword: flag === 'confirm' ? {value: value, error: confirmError} : {...deepCopy(passwordObj.confirmPassword), error: value !== passwordObj.confirmPassword.value}
-                }
-            );
+        let tempPassObj = {
+            password: flag === 'pass' ? {value: value, error: passError} : deepCopy(passwordObj.password), 
+            confirmPassword: flag === 'confirm' ? {value: value, error: confirmError} : {...deepCopy(passwordObj.confirmPassword), error: value !== passwordObj.confirmPassword.value}
+        };    
+        setPasswordObj(tempPassObj);
+        sendStore.setPasswordProtect(tempPassObj)
     }
 
     const showPasswordHandler = (value) => {

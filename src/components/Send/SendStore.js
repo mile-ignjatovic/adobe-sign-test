@@ -14,7 +14,6 @@ const StoreProvider = ({ children }) => {
         // EmailDropDownList cmp
         recipientList: [{id: generateId('list-item')}],
         setRecipientList: data => {
-            console.log('copyArr', data);
             let copyArr = data.map((el, index) => {
                 el.number = index + 1;
                 return deepCopy(el)
@@ -38,7 +37,7 @@ const StoreProvider = ({ children }) => {
         // Options data
         passwordProtect: false,
         setPasswordProtect: (data) => {
-            store.passwordProtect = data;
+            store.passwordProtect = data && data.password && data.password.value ? data.password.value : store.passwordProtect;
         },
         reminder: null,
         setReminder: (data) => {
@@ -53,18 +52,15 @@ const StoreProvider = ({ children }) => {
         agreement: null,
         setAgreement: () => {
             // TODO: check this. its not ok
-            console.log('list', store.recipientList);
-            // store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
+            store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
             store.agreement = {
-                name: store.agreementName,
-                text: store.agreementText,
-                completeInOrder: store.completeInOrder,
-                recipients: store.recipientList,
+                agreementName: store.agreementName,
+                agreementText: store.agreementText,
+                recipients: store.recipientList && [...store.recipientList],
                 password: store.passwordProtect,
                 reminder: store.reminder,
-                files: store.files
+                files: store.uploadedFiles && [...store.uploadedFiles]
             }
-            console.log('sotore agrement', store.agreement);
         }
     }))
 
