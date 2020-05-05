@@ -5,7 +5,8 @@
   position: relative;
 }
 .NormalInput-container__el {
-  padding-left: 2rem!important;
+  padding-left: 1rem!important;
+  padding-right: 1rem!important;
   color: inherit;
   font-size: inherit;
   font-weight: inherit;

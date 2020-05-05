@@ -34,8 +34,12 @@ const Playground = (props) => {
                     <li>type: 'link | action | white | null' - indicates how a button should look like</li>
                     <li>click: function - callback to call on click</li>
                     <li>props.children: string - label for the button</li>
+                    <li>props.styles: object - custom styles</li>
+                    <li>props.disabled: boolean - disables button if true</li>
                 </ul>
                 <Button click={() => alert('Button was clicked')}>Button Label</Button>
+                <br />
+                <Button disabled click={() => alert('Button was clicked')}>Button disabled</Button>
                 <br />
                 <Button type='link' click={() => alert('Link Button was clicked')}>Link Label</Button>
                 <pre className={classes['Playground-pre']}>

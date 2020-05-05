@@ -74,7 +74,7 @@ const StickyHeadTable = (props) => {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
-                                                {column.id !== 'modified' ? column.id === 'recipients' ? value[0].email : value : (
+                                                {column.id !== 'modified' ? column.id === 'recipients' ? value && value.length > 0 && value[0].email : value : (
                                                     <div className={classes.ValueBox}>
                                                         <div className={classes.ButtonGroup}>
                                                             <Button>Open</Button>

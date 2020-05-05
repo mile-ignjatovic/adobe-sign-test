@@ -7,6 +7,15 @@
   width: fit-content;
   transition: all 0.4s ease;
 }
+.Button:disabled {
+  background-color: var(--lightGray);
+  color: #fff;
+  cursor: not-allowed;
+}
+.Button:disabled:hover {
+  background-color: var(--lightGray);
+  color: #fff;
+}
 .Button-normal {
   background-color: var(--normalBlue);
   color: #fff;

@@ -6,6 +6,15 @@
     font-size: inherit;
     width: fit-content;
     transition: all .4s ease;
+    &:disabled {
+        background-color: var(--lightGray);
+        color: #fff;
+        cursor: not-allowed;
+        &:hover {
+            background-color: var(--lightGray);
+            color: #fff;
+        }
+    }
     &-normal {
         background-color: var(--normalBlue);
         color: #fff;

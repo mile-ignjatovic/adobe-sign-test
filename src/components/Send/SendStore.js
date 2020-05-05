@@ -51,10 +51,9 @@ const StoreProvider = ({ children }) => {
         // final agreement
         agreement: null,
         setAgreement: () => {
-            // TODO: check components for validation errors
             store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
             store.agreement = {
-                title: store.title,
+                title: store.title ? store.title : store.uploadedFiles && store.uploadedFiles[0] && store.uploadedFiles[0].name ? store.uploadedFiles[0].name : '',
                 agreementText: store.agreementText,
                 recipients: store.recipientList && [...store.recipientList],
                 password: store.passwordProtect,

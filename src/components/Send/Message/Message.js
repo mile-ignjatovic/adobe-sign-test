@@ -3,6 +3,7 @@ import classes from './Message.module.css';
 import NormalInput from '../../../shared/components/NormalInput/NormalInput';
 import TextArea from '../../../shared/components/TextArea/TextArea';
 import {SendStoreContext} from '../SendStore';
+import { useObserver } from 'mobx-react';
 
 const Message = (props) => {
 
@@ -34,9 +35,13 @@ const Message = (props) => {
         }, 200)
         setTimer(tempTimer);
     }
+
+    let input = useObserver(() => {
+        return <NormalInput hideBottomBorder value={name ? name : store.uploadedFiles && store.uploadedFiles[0] && store.uploadedFiles[0].name} placeholder="Agreement Name" onInputChange={onInputChangeHandler} />
+    })
     return (
         <div className={classes['Message-main']}>
-            <NormalInput hideBottomBorder value={name} placeholder="Agreement Name" onInputChange={onInputChangeHandler} />
+            {input}
             <TextArea value={text} placeholder="Please review and complete this document." onTextChange={onTextChangeHandler}/>
         </div>
     );
