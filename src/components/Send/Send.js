@@ -9,6 +9,7 @@ import Checkbox from '../../shared/components/Checkbox/Checkbox';
 import Options from './Options/Options';
 import Button from '../../shared/components/Button/Button';
 import {AppStoreContext} from '../../AppStore';
+import { useObserver } from 'mobx-react';
 
 const Send = (props) => {
 
@@ -44,8 +45,6 @@ const RouteBox = (props) => {
     const sendStore = useContext(SendStoreContext);
     
     const handleClick = () => {
-        // check if agreement value is valid TODO:
-        // else tell why its not valid
         sendStore.setAgreement();
 
         let agreement = {...sendStore.agreement, modified: new Date().toDateString()};
@@ -56,5 +55,9 @@ const RouteBox = (props) => {
         appStore.setAgreements(tempAgreements);
         setTimeout(() => props.history.push('/manage#in-progress'), 200)
     }
-    return <Button click={handleClick}>Next</Button>
+
+    let button = useObserver(() => {
+        return <Button disabled={!((sendStore.uploadedFiles && sendStore.uploadedFiles.length > 0) && (sendStore.recipientList && sendStore.recipientList.length > 1) )} click={handleClick}>Next</Button>
+    });
+    return button
 }

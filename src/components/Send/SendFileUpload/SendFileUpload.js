@@ -48,20 +48,10 @@ const SendFileUpload = (props) => {
         return fileIcon;
     };
 
-    const createFile = (index, name, idNumber) => {
-        let newFile = {
-            index: index,
-            name: name,
-            extension: name.substring(name.lastIndexOf('.') + 1, name.length) || name,
-            id: generateId(idNumber)
-        };
-        return newFile;
-    };
-
     const checkIfFileIsSupported = (fileName) => {
         let flag = false;
         const FILE_TYPES = {
-            TXT: 'txt', JPG: 'jpg', JPEG: 'jpeg', PDF: 'pdf', PPT: 'ppt', PPTX: 'pptx', DOCX: 'docx', DOC: 'doc'
+            TXT: 'txt', JPG: 'jpg', JPEG: 'jpeg', PDF: 'pdf', PPT: 'ppt', PPTX: 'pptx', DOCX: 'docx', DOC: 'doc', XLSX: 'xlsx', ODT: 'odt'
         };
         for (let key in FILE_TYPES) {
             if (fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) === FILE_TYPES[key]) {
@@ -72,6 +62,17 @@ const SendFileUpload = (props) => {
         return flag;
     }
 
+    const createFile = (index, name, idNumber) => {
+        let newFile = {
+            index: index,
+            name: name,
+            extension: name.substring(name.lastIndexOf('.') + 1, name.length) || name,
+            id: generateId(idNumber),
+            supported: checkIfFileIsSupported(name)
+        };
+        return newFile;
+    };
+
     const dropHandler = (ev) => {
         setDefaultText(defaultText = 'Drag more files here or click to browse');
         ev.preventDefault();
@@ -80,16 +81,45 @@ const SendFileUpload = (props) => {
             for (let i = 0; i < ev.dataTransfer.items.length; i++) {
                 if (ev.dataTransfer.items[i].kind === 'file') {                   
                     let file = ev.dataTransfer.items[i].getAsFile();
-                    if (checkIfFileIsSupported(file.name)) {
-                        let newFile = createFile(i, file.name, i);
+                    let newFile = createFile(i, file.name, i);
+                    if (newFile.supported) {
                         setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
                         fileList.push(newFile);
+                    } else {
+                        wrongFileType(newFile.name);
                     }
                 }
             }
         }
         sendStore.setUploadedFiles(fileList);
     };
+
+    const addUploadedFile = (event) => {
+        let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
+        if (!!file) {
+            let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
+            if (newFile.supported) {
+            let fileList = [...uploadedFiles, newFile];
+                setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+                sendStore.setUploadedFiles(fileList);
+            } else {
+                wrongFileType(newFile.name);
+            }
+        }
+    };
+
+    const wrongFileType = (fileName) => {
+        let text = 'File type ' + fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) + ' is not supported!';
+        let newFile = createFile(uploadedFiles.length + 1, text, uploadedFiles.length + 1);
+        setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
+        
+        // remove from list after timeout
+        setTimeout(() => {
+            let fileList = [...uploadedFiles];
+            fileList.splice(fileList.findIndex(el => el.id === newFile.id), 1);
+            setUploadedFiles([...fileList]);
+        }, 3000)
+    }
 
     const dragHandler = (ev) => {
         ev.preventDefault();
@@ -108,33 +138,23 @@ const SendFileUpload = (props) => {
         setUploadedFiles(uploadedFiles => arrayMove(uploadedFiles, oldIndex, newIndex));
     };
 
-    const addUploadedFile = (event) => {
-        let file = event.target && event.target.files && event.target.files.item(0) && event.target.files.item(0).name;
-        if (!!file) {
-            if (checkIfFileIsSupported(file)) {
-            let newFile = createFile(uploadedFiles.length + 1, file, uploadedFiles.length + 1);
-            let fileList = [...uploadedFiles, newFile];
-                setUploadedFiles(uploadedFiles => [...uploadedFiles, newFile]);
-                sendStore.setUploadedFiles(fileList);
-            }
-        }
-    };
-
     const SortableItem = SortableElement(({ value }) => <li tabIndex={0} className={classes.ListItem}>{value}</li>);
 
     const SortableList = SortableContainer(({ items }) => {
         if (items && items.length > 0) {
             return (
                 <ul className={classes.UnorderedList}>
-                    {items.map((item, i) => (
+                    {items.map((item, i) => { 
+                        let rowCls = [classes.FileRow, item.supported ? '' : classes.InvalidFileRow].join(' ');
+                        return (
                         <SortableItem key={`item-${item}`} index={i} value={
-                            <div id={i} className={classes.FileRow}>
+                            <div id={i} className={rowCls}>
                                 <img className={classes.FileIcon} src={setIcon(item.extension)} alt="xx" />
                                 <span className={classes.File}>{item.name}</span>
-                                <button className={classes.Close} onClick={() => removeItem(item.id)}>✖</button>
+                                {item.supported ? <button className={classes.Close} onClick={() => removeItem(item.id)}>✖</button> : null}
                             </div>
                         } />
-                    ))}
+                    )})}
                 </ul>
             )
         }

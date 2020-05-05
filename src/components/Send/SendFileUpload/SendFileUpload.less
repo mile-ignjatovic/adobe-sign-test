@@ -92,3 +92,19 @@
   width: 1rem;
   height: auto;
 }
+
+.InvalidFileRow {
+  border: var(--errorBorder);
+  color: var(--lightRed);
+  background: url('../../../shared/Assets/warning.svg') no-repeat scroll right center #fff ;
+  background-color: #fff;
+  background-size: 1rem;
+  background-position-x: calc(100% - 1rem);
+  animation: blink 1s infinite ease;
+
+}
+
+@keyframes blink {
+  from {border: var(--errorBorder);}
+  to {border: var(--normalBorder);}
+}
