@@ -8,6 +8,7 @@ import StoreProvider, {SendStoreContext} from './SendStore';
 import Checkbox from '../../shared/components/Checkbox/Checkbox';
 import Options from './Options/Options';
 import Button from '../../shared/components/Button/Button';
+import {AppStoreContext} from '../../AppStore';
 
 const Send = (props) => {
 
@@ -28,7 +29,7 @@ const Send = (props) => {
                         </div>
                         <div style={{marginTop: '2rem'}}>
                             <Checkbox styles={{marginBottom: '1rem'}} checkboxChange={(value) => console.log('checkboxChange', value)}>Preview & Add Signature Fields</Checkbox>
-                            <RouteBox {...props} click={() => console.log('next')}>Next</RouteBox>
+                            <RouteBox {...props}>Next</RouteBox>
                         </div>
                     </div>
                 </section>
@@ -39,6 +40,7 @@ const Send = (props) => {
 export default Send;
 
 const RouteBox = (props) => {
+    const appStore = useContext(AppStoreContext);
     const sendStore = useContext(SendStoreContext);
     
     const handleClick = () => {

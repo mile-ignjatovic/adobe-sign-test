@@ -14,6 +14,7 @@ const StoreProvider = ({ children }) => {
         // EmailDropDownList cmp
         recipientList: [{id: generateId('list-item')}],
         setRecipientList: data => {
+            console.log('copyArr', data);
             let copyArr = data.map((el, index) => {
                 el.number = index + 1;
                 return deepCopy(el)
@@ -52,6 +53,8 @@ const StoreProvider = ({ children }) => {
         agreement: null,
         setAgreement: () => {
             // TODO: check this. its not ok
+            console.log('list', store.recipientList);
+            // store.recipientList.splice(store.recipientList.findIndex(el => el.name === undefined || el.email === undefined), 1);
             store.agreement = {
                 name: store.agreementName,
                 text: store.agreementText,

@@ -1,7 +1,7 @@
 import React, {useState, useRef, useContext} from 'react';
 import classes from './EmailDropdown.module.css';
 import { SendStoreContext } from '../../../SendStore';
-import { generateId } from '../../../../../shared/utils/utils';
+import { generateId, deepCopy } from '../../../../../shared/utils/utils';
 import { useObserver } from 'mobx-react';
 
 const EmailDropdown = (props) => {
@@ -25,22 +25,42 @@ const EmailDropdown = (props) => {
 
     const onInputChange = (event) => {
         let value = event.target.value;
-        setCurrentRecipient({...currentRecipient, email: value, isLast: false});
+        setCurrentRecipient({...currentRecipient, email: value, name: value, isLast: false});
 
-        updateList();
+        updateList(value);
         
         // filterUsersForDropdown(value);
     }
 
-    const updateList = () => {
-        let updatedList = [...store.recipientList];
-        let recipientIndex = updatedList.findIndex(el => currentRecipient && el.id === currentRecipient.id);
-        updatedList[recipientIndex] = {...currentRecipient};
+    const itemSelected = (el) => {
+        let copy = deepCopy(el);
+        setCurrentRecipient(copy)
+        updateList(copy);
+    }
+
+    const updateList = (value) => {
+        let updatedList;
+        updatedList = [...store.recipientList];
         
+        let recipientIndex;
+        
+        if (typeof(value) === 'string') {
+            recipientIndex = updatedList.findIndex(el => currentRecipient && el.id === currentRecipient.id);
+            updatedList[recipientIndex] = {...currentRecipient, email: value, name: value, isLast: false};
+        } else {
+            // if user is in the list return and reset currentRecipient
+            if (!!updatedList.find(el => el.email === value.email)) {
+                setCurrentRecipient(props.value);
+                return;
+            };
+            updatedList[updatedList.length - 1] = {...value, isLast: false};
+        }
+
+
         if (!updatedList[recipientIndex + 1]) {
             updatedList.push({id: generateId('list-item'), isLast: true});
         }
-        
+
         store.setRecipientList(updatedList);
     }
 
@@ -81,10 +101,6 @@ const EmailDropdown = (props) => {
                 inputRef.current.focus();
             }
         }, 200); 
-    }
-    const itemSelected = (el) => {
-        setCurrentRecipient(el)
-        updateList();
     }
 
     let mainClass = [classes.EmailDropdown, editMode ? classes['EmailDropdown-focus'] : ''].join(' ')
